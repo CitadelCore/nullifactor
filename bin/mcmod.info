@@ -5,12 +5,12 @@
   "description": "Have you ever wanted to suck your friends into a wave pool machine? Then this mod is for you!",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "https://towerdevs.xyz/mods/nullifactor",
+  "url": "https://github.com/CitadelCore/nullifactor",
   "updateUrl": "",
   "authorList": ["CitadelCore"],
   "credits": "CitadelCore, for making this mod obviously",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": ["DragonAPI", "RotaryCraft"]
+  "dependencies": ["DraconicEvolution", "Avaritia"]
 }
 ]

@@ -4,19 +4,21 @@ import cpw.mods.fml.common.Loader;
 
 public class ModRegistry {
 	public enum Mods {
-		ROTARYCRAFT("RotaryCraft", "Reika.RotaryCraft.Registry.BlockRegistry", "Reika.RotaryCraft.Registry.ItemRegistry");
+		AVARITIA("Avaritia"),
+		DRACONICEVOLUTION("DraconicEvolution"),
+		ROTARYCRAFT("RotaryCraft");
 		
 		public static final Mods[] mods = values();
 		private final String name;
 		
-		private Mods(String modName, String blockClass, String itemClass) {
+		private Mods(String modName) {
 			name = modName;
 			if (Loader.isModLoaded(modName)) {
 				System.out.println("[HELIOS] Detected installed mod: " + modName + ".");
 			}
 		}
 		
-		public Boolean GetLoaded() {
+		public boolean GetLoaded() {
 			if (Loader.isModLoaded(name)) {
 				return true;
 			}
