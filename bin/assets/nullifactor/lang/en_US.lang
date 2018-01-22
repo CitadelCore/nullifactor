@@ -1,0 +1,93 @@
+item.the_nullifactor.name=The Nullifactor
+item.bedrock_dense.name=Dense Bedrock Alloy Ingot
+item.bedrock_ultradense.name=Ultra-dense Bedrock Alloy Ingot
+item.bedrock_singularity.name=Unstable Singularity
+item.corrupted_singularity.name=Corrupted Singularity
+item.bedrock_dense_gem.name=Dense Bedrock Gem
+
+item.alloy_diamond_emerald.name=Diamond-Emerald Alloy
+item.alloy_diamond_emerald_panel.name=Diamond-Emerald Alloy Panel
+item.alloy_diamond_emerald_fuel.name=Diamond-Emerald Fuel Unit
+item.depleted_diamond_emerald_fuel.name=Depleted Diamond-Emerald Fuel Unit
+
+item.diamond_entangled_singularity.name=Diamond Entangled Singularity
+item.diamond_ingot.name=Diamond Alloy Ingot
+
+item.emerald_entangled_singularity.name=Emerald Entangled Singularity
+item.emerald_ingot.name=Emerald Alloy Ingot
+
+item.quantanium_gem.name=Quantanium Gem
+item.quantanium_ingot.name=Quantanium Alloy Ingot
+item.quantanium_raw.name=Unrefined Quantanium
+item.quantanium_rod.name=Quantanium Alloy Rod
+item.quantanium_panel.name=Quantanium Base Panel
+
+item.quantum_fuelcell.name=Quantum Fuel Cell
+item.depleted_fuelcell.name=Depleted Fuel Cell
+item.base_fuelcell.name=Fuel Cell Enclosure
+
+item.high_density_alloy.name=High-Density Alloy Ingot
+item.high_density_alloy_panel.name=High-Density Alloy Panel
+
+item.quantanium_circuit.name=Quantanium Circuit
+item.quantanium_control_module.name=Quantanium Control Module
+item.quantanium_power_module.name=Quantanium Power Module
+item.testtube_blood.name=Test Tube (Blood)
+item.testtube_smv.name=Test Tube (SMV)
+
+item.diamond_blade.name=Diamond Blade
+item.diamond_chopper.name=Diamond Chopper
+item.diamond_turbine.name=Diamond Turbine
+item.diamond_compound_turbine.name=Diamond Compound Turbine
+item.diamond_saw.name=Diamond Saw
+item.diamond_turbofan.name=Macerator Module
+
+item.polonium_jar.name=Jar of Polonium-210
+item.mask_morko.name=Morko's Mask
+item.mask_white.name=Raven Mask
+
+item.spawnMorko.name=Morko Spawn Egg
+
+tile.quantanium_ore.name=Quantanium Ore
+tile.potato_ore.name=Potato Ore
+tile.high_density_steel.name=High-Density Steel Block
+
+entity.nullifactor.morko.name=Morko
+
+itemGroup.nullifactor=Nullifactor
+itemGroup.nullifactor_resources=Nullifactor Resources
+
+achievement.csingularity=Event Horizon
+achievement.csingularity.desc=Craft a Quantum Singularity
+achievement.cfuel=Better than Uranium
+achievement.cfuel.desc=Craft a Diamond-Emerald Fuel Unit
+achievement.cnullifactor=Sucked In
+achievement.cnullifactor.desc=Craft the Nullifactor
+achievement.suckedin=This Really Sucks
+achievement.suckedin.desc=Suck in 10000 entities with the Nullifactor.
+
+achievement.corrupted=Something's Wrong
+achievement.corrupted.desc=Obtain a Corrupted Singularity
+achievement.borderworld=Space Between the Worlds
+achievement.borderworld.desc=Enter the Ether Borderworld
+achievement.nulldriver=Destroying the Fabric of Reality
+achievement.nulldriver.desc=[UNIMPLEMENTED]
+achievement.shutdown=[REDACTED]
+achievement.shutdown.desc=[UNIMPLEMENTED]
+
+achievement.morko=It's watching
+achievement.morko.desc=Meet Mörkö in the Borderworld.
+achievement.raven=Decapitation
+achievement.raven.desc=[REDACTED]
+
+achievement.recycling=Recycling
+achievement.recycling.desc=Recycle a spent fuel cell.
+achievement.highdensityalloy=This is really heavy
+achievement.highdensityalloy.desc=Make some high-density alloy ingots.
+
+achievement.potatomine=Potato Mine
+achievement.potatomine.desc=Start your highly efficient potato mine.
+achievement.ultimatepotato=Maximum Efficiency
+achievement.ultimatepotato.desc=Mine and cook at a rate of at least 10 potatoes/second. Now that's efficiency.
+achievement.quantumpotato=Quantum Potatoes
+achievement.quantumpotato.desc=Power your potato mine with a quantum reactor.

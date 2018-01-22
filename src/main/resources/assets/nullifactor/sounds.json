@@ -1,0 +1,16 @@
+{
+  "nullifactor.spinup": {
+    "category": "player",
+    "sounds": [ { "name": "spinup"} ]
+  },
+
+  "nullifactor.spindown": {
+    "category": "player",
+    "sounds": [ { "name": "spindown"} ]
+  },
+
+  "nullifactor.ingest": {
+    "category": "player",
+    "sounds": [ { "name": "ingest"} ]
+  }
+}
