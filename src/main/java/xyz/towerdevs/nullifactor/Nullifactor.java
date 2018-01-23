@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
@@ -18,6 +19,7 @@ import xyz.towerdevs.helios.base.HeliosBlock;
 import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.registries.ModRegistry;
 import xyz.towerdevs.nullifactor.blocks.BlockHighDensitySteel;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactor;
 import xyz.towerdevs.nullifactor.entities.EntityMorko;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.items.NullifactorEntityPlacer;
@@ -33,6 +35,7 @@ import java.util.Arrays;
 import com.mojang.realmsclient.dto.McoServer.WorldType;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -40,8 +43,10 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import fox.spiteful.avaritia.render.FancyHaloRenderer;
 
-@Mod(modid = Nullifactor.MODID, version = Nullifactor.VERSION)
+@Mod(modid = Nullifactor.MODID, version = Nullifactor.VERSION, dependencies = "after:Avaritia")
 public final class Nullifactor extends HeliosMod
 {
     public static final String MODID = "nullifactor";
@@ -79,10 +84,12 @@ public final class Nullifactor extends HeliosMod
     {
     	ItemNullifactor.instance.setCreativeTab(creativeTab);
 		GameRegistry.registerItem(ItemNullifactor.instance, "the_nullifactor");
+		ResourceItemRegistry.PostReigsterItems();
 		
 		/** Register resource items such as ingots and ores */
 		for (ResourceItemRegistry registry : ResourceItemRegistry.values()) {
 			HeliosItem item = registry.getItem();
+				
 			item.setCreativeTab(resourceCreativeTab);
 			GameRegistry.registerItem(item, registry.getUnlocalizedName());
 		}
@@ -101,6 +108,7 @@ public final class Nullifactor extends HeliosMod
 		
 		BlockHighDensitySteel.instance.setCreativeTab(resourceCreativeTab);
 		GameRegistry.registerBlock(BlockHighDensitySteel.instance, "high_density_steel");
+		GameRegistry.registerBlock(BlockQuantumReactor.instance, "quantum_reactor");
 		
 		AchievementPage.registerAchievementPage(NullifactorAchievements.instance);
     }
@@ -118,5 +126,17 @@ public final class Nullifactor extends HeliosMod
     @EventHandler
     public void postload(FMLPostInitializationEvent event) {
     	NullifactorRecipes.PostloadRecipes();
+    	
+    	if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+    		FancyHaloRenderer haloRenderer = new FancyHaloRenderer();
+        	
+        	/** Register resource item custom renderers */
+    		for (ResourceItemRegistry registry : ResourceItemRegistry.values()) {
+    			HeliosItem item = registry.getItem();
+    			
+    			if (item.hasAvaritiaHalo)
+    				MinecraftForgeClient.registerItemRenderer(item, haloRenderer);
+    		}
+    	}
     }
 }

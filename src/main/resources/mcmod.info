@@ -11,6 +11,6 @@
   "credits": "CitadelCore, for making this mod obviously",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": ["DraconicEvolution", "Avaritia"]
+  "dependencies": ["CoFHCore", "ThermalFoundation", "ThermalExpansion", "DraconicEvolution", "Avaritia"]
 }
 ]

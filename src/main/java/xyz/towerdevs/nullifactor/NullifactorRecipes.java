@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,10 @@ import xyz.towerdevs.nullifactor.blocks.BlockHighDensitySteel;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;
 import xyz.towerdevs.nullifactor.items.ResourceOreRegistry;
+
+// Avaritia
+import fox.spiteful.avaritia.crafting.ExtremeCraftingManager;
+import fox.spiteful.avaritia.crafting.CompressorManager;
 
 public class NullifactorRecipes {
 	public static void PostloadRecipes() {
@@ -37,6 +42,17 @@ public class NullifactorRecipes {
 		
 		OreDictionary.registerOre("nullifactor:quantanium_ore", ResourceOreRegistry.QUANTANIUMORE.getOre());
 		OreDictionary.registerOre("nullifactor:potato_ore", ResourceOreRegistry.POTATOORE.getOre());
+		
+		if (ModRegistry.AVARITIA.IsLoaded()) {
+			CompressorManager.addRecipe(new ItemStack(ResourceItemRegistry.SINGULDIAMOND.getItem(), 1), 150, new ItemStack(Blocks.diamond_block, 1));
+			CompressorManager.addRecipe(new ItemStack(ResourceItemRegistry.SINGULEMERALD.getItem(), 1), 70, new ItemStack(Blocks.emerald_block, 1));
+			
+			if (ModRegistry.EXTRAUTILITIES.IsLoaded()) {
+				Block bedrockiumBlock = GameRegistry.findBlock(ModRegistry.EXTRAUTILITIES.GetModName(), "block_bedrockium");
+				if (bedrockiumBlock != null)
+					CompressorManager.addRecipe(new ItemStack(ResourceItemRegistry.SINGULBEDROCK.getItem(), 1), 120, new ItemStack(ResourceItemRegistry.SINGULBEDROCK.getItem()));
+			}
+		}
 		
 		// Handle components for RotaryCraft
 		//if (Loader.isModLoaded("DragonAPI") && Loader.isModLoaded(ModRegistry.Mods.ROTARYCRAFT.GetModName())) {

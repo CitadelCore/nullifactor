@@ -5,15 +5,18 @@ item.bedrock_singularity.name=Unstable Singularity
 item.corrupted_singularity.name=Corrupted Singularity
 item.bedrock_dense_gem.name=Dense Bedrock Gem
 
+item.bedrock_singularity.tooltip=Orders of magnitude denser than the known universe.
+item.corrupted_singularity.tooltip=A deep sense of unease stirs within you as you look into its firey, gaping maw.
+
 item.alloy_diamond_emerald.name=Diamond-Emerald Alloy
 item.alloy_diamond_emerald_panel.name=Diamond-Emerald Alloy Panel
 item.alloy_diamond_emerald_fuel.name=Diamond-Emerald Fuel Unit
 item.depleted_diamond_emerald_fuel.name=Depleted Diamond-Emerald Fuel Unit
 
-item.diamond_entangled_singularity.name=Diamond Entangled Singularity
+item.diamond_entangled_singularity.name=Diamond Singularity
 item.diamond_ingot.name=Diamond Alloy Ingot
 
-item.emerald_entangled_singularity.name=Emerald Entangled Singularity
+item.emerald_entangled_singularity.name=Emerald Singularity
 item.emerald_ingot.name=Emerald Alloy Ingot
 
 item.quantanium_gem.name=Quantanium Gem
@@ -21,6 +24,12 @@ item.quantanium_ingot.name=Quantanium Alloy Ingot
 item.quantanium_raw.name=Unrefined Quantanium
 item.quantanium_rod.name=Quantanium Alloy Rod
 item.quantanium_panel.name=Quantanium Base Panel
+
+item.asbestos_fibres.name=Asbestos Fibres
+item.asbestos_fibres.tooltip=Slight risk of lung cancer.
+
+item.asbestos_brick.name=Asbestos Brick
+item.asbestos_brick.tooltip=Relatively safe. We think.
 
 item.quantum_fuelcell.name=Quantum Fuel Cell
 item.depleted_fuelcell.name=Depleted Fuel Cell
@@ -51,6 +60,7 @@ item.spawnMorko.name=Morko Spawn Egg
 tile.quantanium_ore.name=Quantanium Ore
 tile.potato_ore.name=Potato Ore
 tile.high_density_steel.name=High-Density Steel Block
+tile.quantum_reactor.name=Quantum Reactor
 
 entity.nullifactor.morko.name=Morko
 

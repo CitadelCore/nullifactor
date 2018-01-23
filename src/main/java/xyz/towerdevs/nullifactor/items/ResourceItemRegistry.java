@@ -2,9 +2,14 @@ package xyz.towerdevs.nullifactor.items;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.util.StatCollector;
 import xyz.towerdevs.helios.ItemUtilities;
 import xyz.towerdevs.helios.base.HeliosItem;
+import xyz.towerdevs.helios.base.HeliosItem.AvaritiaHaloType;
 import xyz.towerdevs.nullifactor.Nullifactor;
+import fox.spiteful.avaritia.LudicrousText;
+import fox.spiteful.avaritia.items.LudicrousItems;
 
 public enum ResourceItemRegistry {
 	// Bedrock
@@ -30,6 +35,10 @@ public enum ResourceItemRegistry {
 	QUANTANIUMINGOT("quantanium_ingot"),
 	QUANTANIUMROD("quantanium_rod"),
 	QUANTANIUMPANEL("quantanium_panel"),
+	
+	// Asbestos
+	ASBESTOSFIBRES("asbestos_fibres"),
+	ASBESTOSBRICK("asbestos_brick"),
 	
 	// Fuel Cells
 	QUANTUMFUELCELL("quantum_fuelcell", 1, 5000),
@@ -74,6 +83,7 @@ public enum ResourceItemRegistry {
 		this.itemName = unlocalizedName;
 		heliosItem = ItemUtilities.newResourceItem(unlocalizedName, Nullifactor.MODID + ":" + unlocalizedName);
 		heliosItem.setMaxStackSize(maxStackSize);
+		heliosItem.registerInformationText();
 		
 		if (maxDamage != -1)
 			heliosItem.setMaxDamage(maxDamage);
@@ -81,6 +91,24 @@ public enum ResourceItemRegistry {
 	
 	private ResourceItemRegistry(String unlocalizedName) {
 		this(unlocalizedName, 64, -1);
+	}
+	
+	public static void PostReigsterItems() {
+		SINGULBEDROCK.heliosItem.setRarity(EnumRarity.epic);
+		SINGULDIAMOND.heliosItem.setRarity(EnumRarity.uncommon);
+		SINGULEMERALD.heliosItem.setRarity(EnumRarity.uncommon);
+		SINGULCORRUPTED.heliosItem.setRarity(LudicrousItems.cosmic);
+		
+		SINGULBEDROCK.registerAsAvaritiaSingularity(0x1C1C1C, 0xFFFFFF);
+		SINGULDIAMOND.registerAsAvaritiaSingularity(0x1C1C1C, 0x3FBDBD);
+		SINGULEMERALD.registerAsAvaritiaSingularity(0x1C1C1C, 0x55C144);
+		SINGULCORRUPTED.registerAsAvaritiaSingularity(0x1C1C1C, 0xCE480A);
+	}
+	
+	public void registerAsAvaritiaSingularity(int primaryColour, int secondaryColour) {
+		heliosItem.registerItemAnimation("avaritia:singularity", "avaritia:singularity2");
+		heliosItem.registerAvaritiaSpecialHalo(4, false, 0xFF000000, AvaritiaHaloType.REGULAR);
+		heliosItem.registerItemMulticolour(primaryColour, secondaryColour);
 	}
 	
 	public HeliosItem getItem() { return heliosItem; }
