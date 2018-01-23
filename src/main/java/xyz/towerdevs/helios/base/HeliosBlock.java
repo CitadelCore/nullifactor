@@ -1,15 +1,26 @@
 package xyz.towerdevs.helios.base;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.stats.Achievement;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import xyz.towerdevs.helios.registries.SoundRegistry;
 import xyz.towerdevs.nullifactor.misc.NullifactorAchievementRegistry;
 
 public class HeliosBlock extends Block {
 protected SoundRegistry soundRegistry;
+    private IIcon SideTexture, FrontTexture, TopTexture, BottomTexture;
+    private String SideTextureId, FrontTextureId, TopTextureId, BottomTextureId;
+    private boolean useSidedTextures = false;
 	
     private NullifactorAchievementRegistry brokenAchievement = null;
 	public HeliosBlock(String unlocalizedName, Material blockMaterial, String modId) {
@@ -19,13 +30,55 @@ protected SoundRegistry soundRegistry;
 		this.setBlockTextureName(modId + ":" + unlocalizedName);
 	}
 	
+	public void setMultiSidedTexture(String side, String front, String top, String bottom) {
+		this.SideTextureId = side;
+		this.FrontTextureId = front;
+		this.TopTextureId = top;
+		this.BottomTextureId = bottom;
+		
+		this.useSidedTextures = true;
+	}
+	
 	public void setBrokenAchievement(NullifactorAchievementRegistry achOverride) {
 		this.brokenAchievement = achOverride;
+	}
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int state) {
+		super.breakBlock(world, x, y, z, block, state);
 	}
 	
 	@Override
 	public void onBlockHarvested(World world, int p_149681_2_, int p_149681_3_, int p_149681_4_, int p_149681_5_, EntityPlayer player) {
 		if (this.brokenAchievement != null)
 			brokenAchievement.trigger(player);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void registerBlockIcons(IIconRegister iconRegister) {
+		if (this.useSidedTextures) {
+			this.SideTexture = iconRegister.registerIcon(this.SideTextureId);
+			this.FrontTexture = iconRegister.registerIcon(this.FrontTextureId);
+			this.TopTexture = iconRegister.registerIcon(this.TopTextureId);
+			this.BottomTexture = iconRegister.registerIcon(this.BottomTextureId);
+		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+		if (this.useSidedTextures) {
+			if (side == 1)
+				return this.TopTexture;
+			if (side == 2)
+				return this.BottomTexture;
+			if (side == 3)
+				return this.FrontTexture;
+			
+			return this.SideTexture;
+		}
+		
+		return super.getIcon(world, x, y, z, side);
 	}
 }

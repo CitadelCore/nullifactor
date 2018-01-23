@@ -2,7 +2,6 @@ package xyz.towerdevs.nullifactor;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -17,7 +16,6 @@ import net.minecraftforge.common.BiomeManager.BiomeType;
 import xyz.towerdevs.helios.HeliosMod;
 import xyz.towerdevs.helios.base.HeliosBlock;
 import xyz.towerdevs.helios.base.HeliosItem;
-import xyz.towerdevs.helios.registries.ModRegistry;
 import xyz.towerdevs.nullifactor.blocks.BlockHighDensitySteel;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactor;
 import xyz.towerdevs.nullifactor.entities.EntityMorko;
@@ -31,8 +29,6 @@ import xyz.towerdevs.nullifactor.renderers.RenderMorko;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import com.mojang.realmsclient.dto.McoServer.WorldType;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;

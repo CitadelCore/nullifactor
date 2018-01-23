@@ -3,38 +3,22 @@ package xyz.towerdevs.nullifactor.items;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.helios.*;
-import xyz.towerdevs.helios.base.BlockReference;
 import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.InventoryItem;
-import xyz.towerdevs.helios.registries.SoundRegistry;
 
 public class ItemNullifactor extends HeliosItem {
 	private static String unlocalizedName = "the_nullifactor";
 	public static final ItemNullifactor instance = new ItemNullifactor();
 	private int tickCounter = 20;
-	private boolean isActive = false;
 	private Random random = new Random();
 	
 	public ItemNullifactor() {
@@ -114,11 +98,11 @@ public class ItemNullifactor extends HeliosItem {
 		if (tickCounter >= 40) {
 			World world = player.getEntityWorld();
 			int radius = tickCounter;
-			int playerId = player.getEntityId();
 			double suctionPower = tickCounter / 20;
 			if (tickCounter >= 200)
 				radius = 200;
-            List<EntityLiving> mobs = world.getEntitiesWithinAABB(EntityLiving.class, player.boundingBox.expand(radius, radius, radius));
+            @SuppressWarnings("unchecked")
+			List<EntityLiving> mobs = world.getEntitiesWithinAABB(EntityLiving.class, player.boundingBox.expand(radius, radius, radius));
             for (EntityLiving mob : mobs) {
             	moveEntityTowardsPlayer(mob, player, suctionPower);
             	mob.spawnExplosionParticle();
@@ -134,17 +118,20 @@ public class ItemNullifactor extends HeliosItem {
                 }
             }
             
-            List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, player.boundingBox.expand(radius, radius, radius));
+            @SuppressWarnings("unchecked")
+			List<EntityItem> items = world.getEntitiesWithinAABB(EntityItem.class, player.boundingBox.expand(radius, radius, radius));
             for (EntityItem item : items) {
             	moveEntityTowardsPlayer(item, player, suctionPower);
             }
             
-            List<EntityXPOrb> xps = world.getEntitiesWithinAABB(EntityXPOrb.class, player.boundingBox.expand(radius, radius, radius));
+            @SuppressWarnings("unchecked")
+			List<EntityXPOrb> xps = world.getEntitiesWithinAABB(EntityXPOrb.class, player.boundingBox.expand(radius, radius, radius));
             for (EntityXPOrb xp : xps) {
             	moveEntityTowardsPlayer(xp, player, suctionPower);
             }
             
-            List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, player.boundingBox.expand(radius, radius, radius));
+            @SuppressWarnings("unchecked")
+			List<EntityPlayer> players = world.getEntitiesWithinAABB(EntityPlayer.class, player.boundingBox.expand(radius, radius, radius));
             for (EntityPlayer iplayer : players) {
             	if (iplayer.getEntityId() != player.getEntityId()) {
             		moveEntityTowardsPlayer(iplayer, player, suctionPower);

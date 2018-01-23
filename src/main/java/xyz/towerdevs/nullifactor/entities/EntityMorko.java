@@ -1,7 +1,6 @@
 package xyz.towerdevs.nullifactor.entities;
 
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;

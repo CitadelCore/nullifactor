@@ -1,15 +1,11 @@
 package xyz.towerdevs.helios.registries;
 
 import java.util.HashMap;
-import java.util.Map;
-
-import net.minecraft.block.Block.SoundType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.util.ResourceLocation;
-import xyz.towerdevs.helios.HeliosMod;
 import xyz.towerdevs.helios.SoundUtilities;
 
 public class SoundRegistry {
@@ -41,8 +37,6 @@ public class SoundRegistry {
 	
 	public void stopSound(String resource) {
 		if (soundResources.containsKey(resource) && sounds.containsKey(resource)) {
-			ResourceLocation soundRef = soundResources.get(resource);		
-			
 			ISound currsound = sounds.get(resource);
 			soundHandler.stopSound(currsound);
 			sounds.remove(resource);

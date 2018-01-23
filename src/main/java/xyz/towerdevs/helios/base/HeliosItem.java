@@ -5,7 +5,6 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.avaritia.items.LudicrousItems;
 import fox.spiteful.avaritia.render.IHaloRenderItem;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -82,7 +81,7 @@ public class HeliosItem extends Item implements IHaloRenderItem {
 			registerInformationText(text);
 	}
 	
-	private void registerEnchantmentEffect() {
+	public void registerEnchantmentEffect() {
 		this.hasEnchantmentEffect = true;
 	}
 	
@@ -126,6 +125,7 @@ public class HeliosItem extends Item implements IHaloRenderItem {
 		return 0xFFFFFFF;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List tooltip, boolean isSpecial) {
 		if (this.informationText != null)

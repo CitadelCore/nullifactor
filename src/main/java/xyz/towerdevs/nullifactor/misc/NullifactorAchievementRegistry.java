@@ -5,16 +5,11 @@ import net.minecraft.item.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.stats.Achievement;
-import xyz.towerdevs.helios.base.HeliosBlock;
 import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;
-import xyz.towerdevs.nullifactor.items.ResourceOreRegistry;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 
 public enum NullifactorAchievementRegistry {

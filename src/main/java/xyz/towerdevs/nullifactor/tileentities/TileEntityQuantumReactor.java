@@ -1,7 +1,7 @@
 package xyz.towerdevs.nullifactor.tileentities;
 
-import net.minecraft.tileentity.TileEntity;
+import xyz.towerdevs.helios.base.HeliosMachineTileEntity;
 
-public class TileEntityQuantumReactor extends TileEntity {
+public class TileEntityQuantumReactor extends HeliosMachineTileEntity {
 
 }

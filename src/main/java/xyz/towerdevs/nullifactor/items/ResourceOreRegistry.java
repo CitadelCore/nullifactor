@@ -2,10 +2,7 @@ package xyz.towerdevs.nullifactor.items;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.stats.Achievement;
-import xyz.towerdevs.helios.ItemUtilities;
 import xyz.towerdevs.helios.base.HeliosBlock;
-import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.HeliosOre;
 import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.nullifactor.misc.NullifactorAchievementRegistry;

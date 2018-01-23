@@ -1,9 +1,7 @@
 package xyz.towerdevs.nullifactor.blocks;
 
 //import Reika.ReactorCraft.API.NeutronShield;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.world.World;
 import xyz.towerdevs.helios.base.HeliosBlock;
 
 public class BlockHighDensitySteel extends HeliosBlock //implements NeutronShield 

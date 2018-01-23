@@ -1,16 +1,13 @@
 package xyz.towerdevs.nullifactor;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
 import xyz.towerdevs.helios.base.MultiReturnRecipe;
 import xyz.towerdevs.helios.registries.ModRegistry;
 import xyz.towerdevs.nullifactor.blocks.BlockHighDensitySteel;

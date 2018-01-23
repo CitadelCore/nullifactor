@@ -2,14 +2,13 @@ package xyz.towerdevs.helios.base;
 
 import java.util.List;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ShapelessRecipes;
 
 public class MultiReturnRecipe extends ShapelessRecipes {
-	private static ItemStack output;
+	private ItemStack output;
 	
-	public MultiReturnRecipe(ItemStack output, List inputList, ItemStack outputp) {
+	public MultiReturnRecipe(ItemStack output, @SuppressWarnings("rawtypes") List inputList, ItemStack outputp) {
 		super(outputp, inputList);
 		this.output = outputp;
 	}

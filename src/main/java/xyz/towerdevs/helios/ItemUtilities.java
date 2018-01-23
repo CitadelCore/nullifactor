@@ -1,7 +1,6 @@
 package xyz.towerdevs.helios;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import xyz.towerdevs.helios.base.HeliosItem;
 
 public class ItemUtilities {

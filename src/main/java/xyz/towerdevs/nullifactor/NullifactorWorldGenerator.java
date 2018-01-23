@@ -3,14 +3,9 @@ package xyz.towerdevs.nullifactor;
 import java.util.Random;
 
 import cpw.mods.fml.common.IWorldGenerator;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import xyz.towerdevs.helios.base.HeliosItem;
-import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;
-import xyz.towerdevs.nullifactor.items.ResourceOreRegistry;
 
 public class NullifactorWorldGenerator implements IWorldGenerator {
 	@Override

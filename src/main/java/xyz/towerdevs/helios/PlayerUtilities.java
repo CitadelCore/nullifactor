@@ -3,7 +3,6 @@ package xyz.towerdevs.helios;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import xyz.towerdevs.helios.base.InventoryItem;
 
 public class PlayerUtilities {

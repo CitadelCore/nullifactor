@@ -1,14 +1,10 @@
 package xyz.towerdevs.nullifactor.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.util.StatCollector;
 import xyz.towerdevs.helios.ItemUtilities;
 import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.HeliosItem.AvaritiaHaloType;
 import xyz.towerdevs.nullifactor.Nullifactor;
-import fox.spiteful.avaritia.LudicrousText;
 import fox.spiteful.avaritia.items.LudicrousItems;
 
 public enum ResourceItemRegistry {

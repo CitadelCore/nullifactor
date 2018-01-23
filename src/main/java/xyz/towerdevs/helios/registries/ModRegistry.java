@@ -32,6 +32,7 @@ public enum ModRegistry {
 		return name;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Class GetModClass(String modClass) {
 		try {
 			return Class.forName(modClass);
