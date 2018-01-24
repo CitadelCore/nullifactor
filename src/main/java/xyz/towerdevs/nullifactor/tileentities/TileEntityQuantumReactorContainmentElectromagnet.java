@@ -3,9 +3,8 @@ package xyz.towerdevs.nullifactor.tileentities;
 import cofh.api.energy.IEnergyReceiver;
 import cofh.api.energy.IEnergyStorage;
 import net.minecraftforge.common.util.ForgeDirection;
-import xyz.towerdevs.helios.base.HeliosMachineTileEntity;
 
-public class TileEntityQuantumReactorContainmentElectromagnet extends HeliosMachineTileEntity implements IEnergyStorage, IEnergyReceiver {
+public class TileEntityQuantumReactorContainmentElectromagnet extends TileEntityQuantumBase implements IEnergyStorage, IEnergyReceiver {
 
 	@Override
 	public boolean canConnectEnergy(ForgeDirection direction) {

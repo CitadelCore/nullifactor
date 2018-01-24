@@ -2,7 +2,6 @@ package xyz.towerdevs.nullifactor;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
@@ -21,6 +20,8 @@ import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactor;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorContainmentElectromagnet;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorController;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPowerTap;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPylon;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPylonCap;
 import xyz.towerdevs.nullifactor.entities.EntityMorko;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.items.NullifactorEntityPlacer;
@@ -34,6 +35,7 @@ import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactor;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorContainmentElectromagnet;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorController;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPowerTap;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPylon;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -97,6 +99,8 @@ public final class Nullifactor extends HeliosMod
 		BlockHighDensitySteel.instance.setCreativeTab(resourceCreativeTab);
 		GameRegistry.registerBlock(BlockHighDensitySteel.instance, "high_density_steel");
 		GameRegistry.registerBlock(BlockQuantumReactor.instance, "quantum_reactor");
+		GameRegistry.registerBlock(BlockQuantumReactorPylon.instance, "quantum_reactor_pylon");
+		GameRegistry.registerBlock(BlockQuantumReactorPylonCap.instance, "quantum_reactor_pylon_cap");
 		GameRegistry.registerBlock(BlockQuantumReactorContainmentElectromagnet.instance, "quantum_reactor_containment_electromagnet");
 		GameRegistry.registerBlock(BlockQuantumReactorController.instance, "quantum_reactor_controller");
 		GameRegistry.registerBlock(BlockQuantumReactorPowerTap.instance, "quantum_reactor_power_tap");
@@ -134,6 +138,7 @@ public final class Nullifactor extends HeliosMod
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorContainmentElectromagnet.class, "tile_entity_quantum_reactor_containment_electromagnet");
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorController.class, "tile_entity_quantum_reactor_controller");
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorPowerTap.class, "tile_entity_quantum_reactor_power_tap");
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactorPylon.class, "tile_entity_quantum_reactor_pylon");
     }
     
     @EventHandler

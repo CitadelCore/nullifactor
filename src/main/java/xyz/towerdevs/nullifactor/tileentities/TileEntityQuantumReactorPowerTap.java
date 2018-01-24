@@ -4,9 +4,8 @@ import cofh.api.energy.IEnergyProvider;
 import cofh.api.energy.IEnergyStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
-import xyz.towerdevs.helios.base.HeliosMachineTileEntity;
 
-public class TileEntityQuantumReactorPowerTap extends HeliosMachineTileEntity implements IEnergyStorage, IEnergyProvider {
+public class TileEntityQuantumReactorPowerTap extends TileEntityQuantumBase implements IEnergyStorage, IEnergyProvider {
 	protected static int maxCapacity = 100000000;
 	protected static int maxExtract = 10000000;
 	protected int energy;
@@ -17,8 +16,8 @@ public class TileEntityQuantumReactorPowerTap extends HeliosMachineTileEntity im
 		
 		this.energy = nbt.getInteger("Energy");
 		
-		if (this.energy > this.maxCapacity)
-			this.energy = this.maxCapacity;
+		if (this.energy > TileEntityQuantumReactorPowerTap.maxCapacity)
+			this.energy = TileEntityQuantumReactorPowerTap.maxCapacity;
 	}
 	
     @Override
@@ -31,7 +30,9 @@ public class TileEntityQuantumReactorPowerTap extends HeliosMachineTileEntity im
 		nbt.setInteger("Energy", this.energy);
 	}
     
+    /** Adds the specified amount of RPU (Reactor Power Units) to the power tap. They are converted to RF/MJ/J/EU/SP instantly. */
     public void recievePowerUnits(int reactorPowerUnits) {
+    	// TODO: Power conversion for RC shaft power?
     	// 1 RPU = 1kRF / 100MJ / 2500J / 250EU
     	this.energy += reactorPowerUnits * 1000;
     }
@@ -39,7 +40,7 @@ public class TileEntityQuantumReactorPowerTap extends HeliosMachineTileEntity im
 	@Override
 	public int extractEnergy(int maxExtract, boolean simulate)
 	{
-		int energyExtracted = Math.min(this.energy, Math.min(this.maxExtract, maxExtract));
+		int energyExtracted = Math.min(this.energy, Math.min(TileEntityQuantumReactorPowerTap.maxExtract, maxExtract));
 		
 		if (!simulate)
 			this.energy -= energyExtracted;
@@ -54,7 +55,7 @@ public class TileEntityQuantumReactorPowerTap extends HeliosMachineTileEntity im
 
 	@Override
 	public int getMaxEnergyStored() {
-		return this.maxCapacity;
+		return TileEntityQuantumReactorPowerTap.maxCapacity;
 	}
 
 	@Override
