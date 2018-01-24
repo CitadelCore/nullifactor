@@ -18,14 +18,22 @@ import xyz.towerdevs.helios.base.HeliosBlock;
 import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.nullifactor.blocks.BlockHighDensitySteel;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactor;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorContainmentElectromagnet;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorController;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPowerTap;
 import xyz.towerdevs.nullifactor.entities.EntityMorko;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.items.NullifactorEntityPlacer;
+import xyz.towerdevs.nullifactor.items.ResourceBlockRegistry;
 import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;
 import xyz.towerdevs.nullifactor.items.ResourceOreRegistry;
 import xyz.towerdevs.nullifactor.misc.BiomeFrozenSwamp;
 import xyz.towerdevs.nullifactor.misc.NullifactorAchievements;
 import xyz.towerdevs.nullifactor.renderers.RenderMorko;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactor;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorContainmentElectromagnet;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorController;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPowerTap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,13 +59,13 @@ public final class Nullifactor extends HeliosMod
     
     public static CreativeTabs creativeTab = new CreativeTabs("nullifactor") {
     	@Override public Item getTabIconItem() {
-    		return Items.skull;
+    		return ItemNullifactor.instance;
     	}
     };
     
     public static CreativeTabs resourceCreativeTab = new CreativeTabs("nullifactor_resources") {
     	@Override public Item getTabIconItem() {
-    		return ResourceItemRegistry.QUANTANIUMGEM.getItem();
+    		return ResourceItemRegistry.SINGULBEDROCK.getItem();
     	}
     };
     
@@ -73,6 +81,25 @@ public final class Nullifactor extends HeliosMod
 		
 		WorldChunkManager.allowedBiomes.clear();
 		WorldChunkManager.allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(BiomeGenBase.extremeHills, frozenSwamp));
+		
+		for (ResourceOreRegistry registry : ResourceOreRegistry.values()) {
+			HeliosBlock ore = registry.getOre();
+			GameRegistry.registerBlock(ore, registry.getUnlocalizedName());
+			ore.setCreativeTab(resourceCreativeTab);
+		}
+		
+		for (ResourceBlockRegistry registry : ResourceBlockRegistry.values()) {
+			HeliosBlock block = registry.getBlock();
+			GameRegistry.registerBlock(block, registry.getUnlocalizedName());
+			block.setCreativeTab(resourceCreativeTab);
+		}
+		
+		BlockHighDensitySteel.instance.setCreativeTab(resourceCreativeTab);
+		GameRegistry.registerBlock(BlockHighDensitySteel.instance, "high_density_steel");
+		GameRegistry.registerBlock(BlockQuantumReactor.instance, "quantum_reactor");
+		GameRegistry.registerBlock(BlockQuantumReactorContainmentElectromagnet.instance, "quantum_reactor_containment_electromagnet");
+		GameRegistry.registerBlock(BlockQuantumReactorController.instance, "quantum_reactor_controller");
+		GameRegistry.registerBlock(BlockQuantumReactorPowerTap.instance, "quantum_reactor_power_tap");
     }
     
     @EventHandler
@@ -80,20 +107,12 @@ public final class Nullifactor extends HeliosMod
     {
     	ItemNullifactor.instance.setCreativeTab(creativeTab);
 		GameRegistry.registerItem(ItemNullifactor.instance, "the_nullifactor");
-		ResourceItemRegistry.PostReigsterItems();
 		
 		/** Register resource items such as ingots and ores */
 		for (ResourceItemRegistry registry : ResourceItemRegistry.values()) {
 			HeliosItem item = registry.getItem();
-				
-			item.setCreativeTab(resourceCreativeTab);
 			GameRegistry.registerItem(item, registry.getUnlocalizedName());
-		}
-		
-		for (ResourceOreRegistry registry : ResourceOreRegistry.values()) {
-			HeliosBlock ore = registry.getOre();
-			ore.setCreativeTab(resourceCreativeTab);
-			GameRegistry.registerBlock(ore, registry.getUnlocalizedName());
+			item.setCreativeTab(resourceCreativeTab);
 		}
 		
 		GameRegistry.registerWorldGenerator(new NullifactorWorldGenerator(), 100);
@@ -101,11 +120,6 @@ public final class Nullifactor extends HeliosMod
 		EntityRegistry.registerModEntity(EntityMorko.class, "morko", 57, "nullifactor", 128, 1, false);
 		
 		GameRegistry.registerItem(new NullifactorEntityPlacer("morko", 0xE18519, 0x000000).setUnlocalizedName("spawnMorko"), "spawnMorko");
-		
-		BlockHighDensitySteel.instance.setCreativeTab(resourceCreativeTab);
-		GameRegistry.registerBlock(BlockHighDensitySteel.instance, "high_density_steel");
-		GameRegistry.registerBlock(BlockQuantumReactor.instance, "quantum_reactor");
-		
 		AchievementPage.registerAchievementPage(NullifactorAchievements.instance);
     }
     
@@ -116,12 +130,17 @@ public final class Nullifactor extends HeliosMod
     
     @EventHandler
     public void load(FMLInitializationEvent event) {
-    	
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactor.class, "tile_entity_quantum_reactor");
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactorContainmentElectromagnet.class, "tile_entity_quantum_reactor_containment_electromagnet");
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactorController.class, "tile_entity_quantum_reactor_controller");
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactorPowerTap.class, "tile_entity_quantum_reactor_power_tap");
     }
     
     @EventHandler
     public void postload(FMLPostInitializationEvent event) {
+    	ResourceItemRegistry.PostReigsterItems();
     	NullifactorRecipes.PostloadRecipes();
+    	ResourceBlockRegistry.PostReigsterBlocks();
     	
     	if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
     		FancyHaloRenderer haloRenderer = new FancyHaloRenderer();

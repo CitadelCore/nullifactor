@@ -68,5 +68,6 @@
 	<classpathentry kind="lib" path="libs/ThermalExpansion-[1.7.10]4.1.5-248.jar"/>
 	<classpathentry kind="lib" path="libs/ThermalFoundation-[1.7.10]1.2.6-118.jar"/>
 	<classpathentry kind="lib" path="libs/BrandonsCore-1.0.0.12.jar"/>
+	<classpathentry kind="lib" path="libs/ThermalDynamics-[1.7.10]1.2.1-172.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

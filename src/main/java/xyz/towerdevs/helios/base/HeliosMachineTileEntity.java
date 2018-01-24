@@ -14,14 +14,14 @@ public class HeliosMachineTileEntity extends HeliosTileEntity {
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound tag) {
-		super.readFromNBT(tag);
+	public void hookReadNBT(NBTTagCompound tag) {
+		super.hookReadNBT(tag);
 		this.directionFacing = tag.getShort("MachineFacing");
 	}
 	
 	@Override
-	public void writeToNBT(NBTTagCompound tag) {
-		super.writeToNBT(tag);
+	public void hookWriteNBT(NBTTagCompound tag) {
+		super.hookWriteNBT(tag);
 		tag.setShort("MachineFacing", (short) this.directionFacing);
 	}
 }

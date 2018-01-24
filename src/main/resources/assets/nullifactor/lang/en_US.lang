@@ -5,7 +5,7 @@ item.bedrock_singularity.name=Unstable Singularity
 item.corrupted_singularity.name=Corrupted Singularity
 item.bedrock_dense_gem.name=Dense Bedrock Gem
 
-item.bedrock_singularity.tooltip=Orders of magnitude denser than the known universe.
+item.bedrock_singularity.tooltip=Orders of magnitude denser than all of the collective matter in the known universe.
 item.corrupted_singularity.tooltip=A deep sense of unease stirs within you as you look into its firey, gaping maw.
 
 item.alloy_diamond_emerald.name=Diamond-Emerald Alloy
@@ -60,7 +60,13 @@ item.spawnMorko.name=Morko Spawn Egg
 tile.quantanium_ore.name=Quantanium Ore
 tile.potato_ore.name=Potato Ore
 tile.high_density_steel.name=High-Density Steel Block
-tile.quantum_reactor.name=Quantum Reactor
+tile.quantum_reactor.name=Quantum Reactor Core
+tile.quantum_reactor_pylon.name=Quantum Reactor Pylon
+tile.quantum_reactor_pylon_top.name=Quantum Reactor Pylon Cap
+tile.quantum_reactor_containment_electromagnet.name=Quantum Reactor Containment Electromagnet
+tile.quantum_reactor_controller.name=Quantum Reactor Controller
+tile.quantum_reactor_power_tap.name=Quantum Reactor Outflow Connector
+tile.base_machine_frame.name=Base Machine Frame
 
 entity.nullifactor.morko.name=Morko
 

@@ -18,16 +18,23 @@ import xyz.towerdevs.nullifactor.misc.NullifactorAchievementRegistry;
 
 public class HeliosBlock extends Block {
 protected SoundRegistry soundRegistry;
-    private IIcon SideTexture, FrontTexture, TopTexture, BottomTexture;
-    private String SideTextureId, FrontTextureId, TopTextureId, BottomTextureId;
-    private boolean useSidedTextures = false;
+    protected IIcon SideTexture;
+	protected IIcon FrontTexture;
+	protected IIcon TopTexture;
+	protected IIcon BottomTexture;
+	
+	protected IIcon DefaultTexture;
+	
+    private String SideTextureId, FrontTextureId, TopTextureId, BottomTextureId, DefaultTextureId;
+    protected boolean useSidedTextures = false;
 	
     private NullifactorAchievementRegistry brokenAchievement = null;
 	public HeliosBlock(String unlocalizedName, Material blockMaterial, String modId) {
 		super(blockMaterial);
 		this.soundRegistry = new SoundRegistry();
 		this.setBlockName(unlocalizedName);
-		this.setBlockTextureName(modId + ":" + unlocalizedName);
+		//this.setBlockTextureName(modId + ":" + unlocalizedName);
+		this.DefaultTextureId = modId + ":" + unlocalizedName;
 	}
 	
 	public void setMultiSidedTexture(String side, String front, String top, String bottom) {
@@ -63,22 +70,24 @@ protected SoundRegistry soundRegistry;
 			this.TopTexture = iconRegister.registerIcon(this.TopTextureId);
 			this.BottomTexture = iconRegister.registerIcon(this.BottomTextureId);
 		}
+		
+		this.DefaultTexture = iconRegister.registerIcon(this.DefaultTextureId);
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
-		if (this.useSidedTextures) {
+		if (this.useSidedTextures == true) {
+			if (side == 0)
+				return this.BottomTexture;
 			if (side == 1)
 				return this.TopTexture;
-			if (side == 2)
-				return this.BottomTexture;
 			if (side == 3)
 				return this.FrontTexture;
 			
 			return this.SideTexture;
 		}
 		
-		return super.getIcon(world, x, y, z, side);
+		return this.DefaultTexture;
 	}
 }

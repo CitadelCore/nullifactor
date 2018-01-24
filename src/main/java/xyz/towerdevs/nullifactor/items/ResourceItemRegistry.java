@@ -4,10 +4,11 @@ import net.minecraft.item.EnumRarity;
 import xyz.towerdevs.helios.ItemUtilities;
 import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.HeliosItem.AvaritiaHaloType;
+import xyz.towerdevs.helios.interfaces.IResourceRegistry;
 import xyz.towerdevs.nullifactor.Nullifactor;
 import fox.spiteful.avaritia.items.LudicrousItems;
 
-public enum ResourceItemRegistry {
+public enum ResourceItemRegistry implements IResourceRegistry {
 	// Bedrock
 	DENSEBEDROCK("bedrock_dense"),
 	UDENSEBEDROCK("bedrock_ultradense"),

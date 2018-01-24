@@ -1,12 +1,16 @@
 package xyz.towerdevs.helios.base;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class HeliosBlockContainer extends HeliosBlock implements ITileEntityProvider {
@@ -55,5 +59,28 @@ public class HeliosBlockContainer extends HeliosBlock implements ITileEntityProv
 	public void breakBlock(World world, int x, int y, int z, Block block, int state) {
 		world.removeTileEntity(x, y, z);
 		super.breakBlock(world, x, y, z, block, state);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(IBlockAccess world, int x, int y, int z, int side) {
+		if (this.useSidedTextures) {
+			TileEntity tile = world.getTileEntity(x, y, z);
+			if (tile instanceof HeliosMachineTileEntity) {
+				HeliosMachineTileEntity machine = (HeliosMachineTileEntity)tile;
+				if (side == machine.getFacing())
+					return this.FrontTexture;
+			}
+			
+			if (side == 0)
+				return this.BottomTexture;
+			if (side == 1)
+				return this.TopTexture;
+			
+			
+			return this.SideTexture;
+		}
+		
+		return super.getIcon(world, x, y, z, side);
 	}
 }
