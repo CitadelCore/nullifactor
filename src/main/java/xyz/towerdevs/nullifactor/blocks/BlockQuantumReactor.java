@@ -60,7 +60,7 @@ public class BlockQuantumReactor extends BlockQuantumBase {
 		
 		if (!selfCore.isCoreMaster()) {
 			player.addChatMessage(new ChatComponentText("This reactor core is NOT the multiblock master."));
-			return true;
+			//return true;
 		}
 		
 		if (selfCore.validateMultiblock(true))

@@ -94,14 +94,18 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 		}
 		
 		reactors.add(0, this);
+		int finalSearchRadius = searchRadius;
 		
-		TileEntity tempReactor = this.worldObj.getTileEntity(this.xCoord + searchRadius, this.yCoord, this.zCoord + searchRadius);
+		if (searchRadius > 1)
+			finalSearchRadius--;
+		
+		TileEntity tempReactor = this.worldObj.getTileEntity(this.xCoord + finalSearchRadius, this.yCoord, this.zCoord + finalSearchRadius);
 		if (tempReactor instanceof TileEntityQuantumReactor) {
 			TileEntityQuantumReactor maxReactor = (TileEntityQuantumReactor) tempReactor;
 			List<TileEntityQuantumBase> rblocks = maxReactor.getBlocksInColumn();
 			TileEntityQuantumBase maxBlock = rblocks.get(rblocks.size() - 1);
 			
-			BlockReference minCoord = new BlockReference(null, this.xCoord - searchRadius, this.yCoord, this.zCoord - searchRadius);
+			BlockReference minCoord = new BlockReference(null, this.xCoord - finalSearchRadius, this.yCoord, this.zCoord - finalSearchRadius);
 			BlockReference maxCoord = new BlockReference(null, maxBlock.xCoord, maxBlock.yCoord, maxBlock.zCoord);
 			
 			return new ConnectedReactorResult(reactors, searchRadius, minCoord, maxCoord);
@@ -129,9 +133,9 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
     	if (this.minBlock == null || this.maxBlock == null)
     		return entList;
     	
-    	for (int x = this.xCoord - this.minBlock.x; x <= this.xCoord + this.maxBlock.x; x++) {
-    		for (int y = this.yCoord - this.minBlock.y; y <= this.yCoord + this.maxBlock.y; y++) {
-    			for (int z = this.zCoord - this.minBlock.z; z <= this.zCoord + this.maxBlock.z; z++) {
+    	for (int x = this.minBlock.x; x <= this.maxBlock.x; x++) {
+    		for (int y = this.minBlock.y; y <= this.maxBlock.y; y++) {
+    			for (int z = this.minBlock.z; z <= this.maxBlock.z; z++) {
                 	TileEntity ent = this.worldObj.getTileEntity(x, y, z);
                 	if (ent != null && ent instanceof TileEntityQuantumBase)
                 		entList.add((TileEntityQuantumBase) ent);
@@ -153,11 +157,17 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 			this.logIfVerbose("Too few reactor cores for multiblock, or reactor core is not the center core.", verbose);
 			return false;
 		}
-			
+		
+		int firstCoreSize = adj.get(0).getBlocksInColumn().size();
 		// Iterate through the adjacent reactor cores
 		for (int i = 0; i < adj.size(); i++) {
 			TileEntityQuantumReactor core = adj.get(i);
 			List<TileEntityQuantumBase> coreBlocks = core.getBlocksInColumn();
+			
+			if (firstCoreSize != coreBlocks.size()) {
+				this.logIfVerbose("Number of blocks in the reactor stacks do not match. Please ensure all reactor stacks are the same height.", verbose);
+				return false;
+			}
 			
 			if (coreBlocks.size() > 16) {
 				this.logIfVerbose("Reactor stack on core " + i + " is too large. The maximum modules in a stack is " + TileEntityQuantumReactor.maxReactorStackHeight + ".", verbose);
@@ -230,6 +240,7 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 				}
 			}
 			
+			this.setMaster(this.xCoord, this.yCoord, this.zCoord);
 			this.setCoreAsMaster();
 		}
 	}
