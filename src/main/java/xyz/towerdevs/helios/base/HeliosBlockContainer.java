@@ -57,8 +57,8 @@ public class HeliosBlockContainer extends HeliosBlock implements ITileEntityProv
 	
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int state) {
-		world.removeTileEntity(x, y, z);
 		super.breakBlock(world, x, y, z, block, state);
+		world.removeTileEntity(x, y, z);
 	}
 	
 	@Override

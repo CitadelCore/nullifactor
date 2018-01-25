@@ -11,7 +11,7 @@ import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumBase;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactor;
 
-public class BlockQuantumReactor extends HeliosBlockContainer {
+public class BlockQuantumReactor extends BlockQuantumBase {
 
 	public static final BlockQuantumReactor instance = new BlockQuantumReactor();
 	public BlockQuantumReactor() {
@@ -43,6 +43,8 @@ public class BlockQuantumReactor extends HeliosBlockContainer {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		super.onBlockActivated(world, x, y, z, player, par6, par7, par8, par9);
+		
 		if (world.isRemote)
 			return true;
 		
@@ -52,16 +54,20 @@ public class BlockQuantumReactor extends HeliosBlockContainer {
 		
 		TileEntityQuantumReactor selfCore = (TileEntityQuantumReactor) selfTile;
 		
-		try {
-			selfCore.validateMultiblock();
-			player.addChatMessage(new ChatComponentText("Reactor multiblock is valid."));
-		} catch (Exception e) {
-			e.printStackTrace();
-			player.addChatMessage(new ChatComponentText("Failed to validate reactor multiblock: " + e.getMessage()));
+		if (selfCore.hasMaster()) {
+			player.addChatMessage(new ChatComponentText("This reactor core is already linked to a master!"));
 		}
 		
-		player.addChatMessage(new ChatComponentText("Blocks in reactor column: " + selfCore.getTileEntitiesAbove().size()));
-		player.addChatMessage(new ChatComponentText("Adjacent reactor blocks: " + selfCore.getAdjacentReactors().size()));
+		if (!selfCore.isCoreMaster()) {
+			player.addChatMessage(new ChatComponentText("This reactor core is NOT the multiblock master."));
+			return true;
+		}
+		
+		if (selfCore.validateMultiblock(true))
+			selfCore.constructMultiblock();
+		
+		//player.addChatMessage(new ChatComponentText("Blocks in reactor column: " + selfCore.getTileEntitiesAbove().size()));
+		//player.addChatMessage(new ChatComponentText("Connected reactor blocks: " + selfCore.getConnectedReactors().size()));
 		return true;
 	}
 }

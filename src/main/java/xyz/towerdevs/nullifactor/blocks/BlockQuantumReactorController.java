@@ -5,7 +5,7 @@ import xyz.towerdevs.helios.base.HeliosBlockContainer;
 import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorController;
 
-public class BlockQuantumReactorController extends HeliosBlockContainer {
+public class BlockQuantumReactorController extends BlockQuantumBase {
 	public static final BlockQuantumReactorController instance = new BlockQuantumReactorController();
 	public BlockQuantumReactorController() {
 		super("quantum_reactor_controller", Material.iron, "nullifactor", TileEntityQuantumReactorController.class);

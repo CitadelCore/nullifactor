@@ -5,7 +5,7 @@ import xyz.towerdevs.helios.base.HeliosBlockContainer;
 import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPowerTap;
 
-public class BlockQuantumReactorPowerTap extends HeliosBlockContainer {
+public class BlockQuantumReactorPowerTap extends BlockQuantumBase {
 	public static final BlockQuantumReactorPowerTap instance = new BlockQuantumReactorPowerTap();
 	public BlockQuantumReactorPowerTap() {
 		super("quantum_reactor_power_tap", Material.iron, "nullifactor", TileEntityQuantumReactorPowerTap.class);
