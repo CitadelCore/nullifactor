@@ -2,6 +2,7 @@ package xyz.towerdevs.nullifactor.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import xyz.towerdevs.nullifactor.Nullifactor;
@@ -25,4 +26,19 @@ public class BlockQuantumReactorSingularity extends BlockQuantumBase {
 		
 		super.breakBlock(world, x, y, z, block, state);
 	}
+	
+	 @Override
+	 public boolean onBlockActivated (World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
+	    {
+	        if (world.isRemote)
+	        {
+	            return true;
+	        }
+	        else
+	        {
+	            player.openGui(Nullifactor.instance, 0, world, x, y, z);
+
+	            return true;
+	        }
+	    }
 }

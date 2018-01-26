@@ -44,13 +44,13 @@ import java.util.Arrays;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -59,6 +59,9 @@ import fox.spiteful.avaritia.render.FancyHaloRenderer;
 @Mod(modid = Nullifactor.MODID, version = Nullifactor.VERSION, dependencies = "after:Avaritia")
 public final class Nullifactor extends HeliosMod
 {
+	@Instance(Nullifactor.MODID)
+	public static Nullifactor instance;
+	
     public static final String MODID = "nullifactor";
     public static final String VERSION = "1.0.0.0";
     public static final BiomeFrozenSwamp frozenSwamp = new BiomeFrozenSwamp(157);
@@ -130,6 +133,8 @@ public final class Nullifactor extends HeliosMod
 		
 		GameRegistry.registerItem(new NullifactorEntityPlacer("morko", 0xE18519, 0x000000).setUnlocalizedName("spawnMorko"), "spawnMorko");
 		AchievementPage.registerAchievementPage(NullifactorAchievements.instance);
+		
+		NetworkRegistry.INSTANCE.registerGuiHandler(Nullifactor.instance, new NullifactorGUI());
     }
     
     @EventHandler

@@ -1,24 +1,38 @@
 package xyz.towerdevs.nullifactor.tileentities;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
-import xyz.towerdevs.nullifactor.models.SingularityData;
+import net.minecraftforge.common.util.ForgeDirection;
+import xyz.towerdevs.nullifactor.items.ItemSingularity;
+import xyz.towerdevs.nullifactor.items.ItemSingularity.Singularities;
 
 public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase implements ISidedInventory, IUpdatePlayerListBox {
-	private SingularityData singularity;
+	private Singularities singularity;
+	private ItemStack singularityStack;
 	
 	@Override
 	public void hookReadNBT(NBTTagCompound nbt) {
 		super.hookReadNBT(nbt);
+		
+		if (nbt.hasKey("SingularityStack")) {
+			NBTTagCompound stackCompound = nbt.getCompoundTag("SingularityStack");
+			this.singularityStack = ItemStack.loadItemStackFromNBT(stackCompound);
+		}
 	}
 	
 	@Override
 	public void hookWriteNBT(NBTTagCompound nbt) {
 		super.hookWriteNBT(nbt);
+		
+		if (this.singularityStack != null) {
+			NBTTagCompound stackCompound = new NBTTagCompound();
+			this.singularityStack.writeToNBT(stackCompound);
+			nbt.setTag("SingularityStack", stackCompound);
+		}
+		
 	}
 	
 	// Singularity frames can't melt.
@@ -29,97 +43,88 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 
 	@Override
 	public int getSizeInventory() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		// TODO Auto-generated method stub
-		return null;
+		return singularityStack;
 	}
 
 	@Override
-	public ItemStack decrStackSize(int p_70298_1_, int p_70298_2_) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemStack decrStackSize(int slot, int count) {
+		ItemStack newStack = this.singularityStack.copy();
+		this.singularityStack = null;
+		return newStack;
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int p_70304_1_) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void setInventorySlotContents(int p_70299_1_, ItemStack stack) {
-		// TODO Auto-generated method stub
-		
+		this.singularityStack = stack;
 	}
 
 	@Override
 	public String getInventoryName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Singularity Frame";
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return true;
 	}
 
 	@Override
 	public void openInventory() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int p_94041_1_, ItemStack stack) {
-		// TODO Auto-generated method stub
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		if (stack != null && stack.getItem() instanceof ItemSingularity)
+			return true;
 		return false;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		// TODO Auto-generated method stub
-		return null;
+		ForgeDirection dir = ForgeDirection.getOrientation(side);
+		if (dir == ForgeDirection.UP || dir == ForgeDirection.DOWN)
+			return new int[] {};
+	    return new int[] {1};
 	}
 
 	@Override
-	public boolean canInsertItem(int p_102007_1_, ItemStack p_102007_2_, int p_102007_3_) {
-		// TODO Auto-generated method stub
+	public boolean canInsertItem(int slot, ItemStack stack, int p_102007_3_) {
+		if (stack != null && stack.getItem() instanceof ItemSingularity) {
+			return true;
+		}
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int p_102008_1_, ItemStack p_102008_2_, int p_102008_3_) {
-		// TODO Auto-generated method stub
+	public boolean canExtractItem(int slot, ItemStack stack, int p_102008_3_) {
 		return false;
 	}
 }

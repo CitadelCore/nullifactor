@@ -8,7 +8,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import xyz.towerdevs.helios.base.BlockReference;
 import xyz.towerdevs.helios.base.HeliosMachineTileEntity;
 import xyz.towerdevs.helios.base.TileEntityReference;
 

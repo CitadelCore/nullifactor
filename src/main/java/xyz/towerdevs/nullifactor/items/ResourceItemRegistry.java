@@ -6,7 +6,6 @@ import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.HeliosItem.AvaritiaHaloType;
 import xyz.towerdevs.helios.interfaces.IResourceRegistry;
 import xyz.towerdevs.nullifactor.Nullifactor;
-import xyz.towerdevs.nullifactor.models.SingularityData;
 import fox.spiteful.avaritia.items.LudicrousItems;
 
 public enum ResourceItemRegistry implements IResourceRegistry {
@@ -110,10 +109,10 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 		SINGULEMERALD.registerAsAvaritiaSingularity(0x1C1C1C, 0x55C144);
 		SINGULCORRUPTED.registerAsAvaritiaSingularity(0x1C1C1C, 0xCE480A);
 		
-		((ItemSingularity) SINGULBEDROCK.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
-		((ItemSingularity) SINGULDIAMOND.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
-		((ItemSingularity) SINGULEMERALD.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
-		((ItemSingularity) SINGULCORRUPTED.heliosItem).setSingularity(SingularityData.Singularities.CORRUPTED);
+		((ItemSingularity) SINGULBEDROCK.heliosItem).setSingularity(ItemSingularity.Singularities.BEDROCK);
+		((ItemSingularity) SINGULDIAMOND.heliosItem).setSingularity(ItemSingularity.Singularities.BEDROCK);
+		((ItemSingularity) SINGULEMERALD.heliosItem).setSingularity(ItemSingularity.Singularities.BEDROCK);
+		((ItemSingularity) SINGULCORRUPTED.heliosItem).setSingularity(ItemSingularity.Singularities.CORRUPTED);
 	}
 	
 	public void registerAsAvaritiaSingularity(int primaryColour, int secondaryColour) {
