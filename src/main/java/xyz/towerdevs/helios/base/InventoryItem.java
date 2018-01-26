@@ -11,6 +11,6 @@ public class InventoryItem {
 		this.slot = slot;
 	}
 	
-	public ItemStack getItem() { return item; }
-	public int getSlot() { return slot; }
+	public ItemStack getItem() { return this.item; }
+	public int getSlot() { return this.slot; }
 }

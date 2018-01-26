@@ -41,17 +41,14 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
         super();
     }
     
-    public NullifactorEntityPlacer(String parEntityToSpawnName, int parPrimaryColor, 
-          int parSecondaryColor)
+    public NullifactorEntityPlacer(String parEntityToSpawnName, int parPrimaryColor, int parSecondaryColor)
     {
         setHasSubtypes(false);
-        maxStackSize = 64;
+        this.maxStackSize = 64;
         setCreativeTab(CreativeTabs.tabMisc);
         setEntityToSpawnName(parEntityToSpawnName);
-        colorBase = parPrimaryColor;
-        colorSpots = parSecondaryColor;
-        // DEBUG
-        System.out.println("Spawn egg constructor for "+entityToSpawnName);
+        this.colorBase = parPrimaryColor;
+        this.colorSpots = parSecondaryColor;
     }
 
     /**
@@ -177,26 +174,25 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
      
        if (!parWorld.isRemote) // never spawn entity on client side
        {
-            entityToSpawnNameFull = Nullifactor.MODID + "." + entityToSpawnName;
-            if (EntityList.stringToClassMapping.containsKey(entityToSpawnNameFull))
+    	   this.entityToSpawnNameFull = Nullifactor.MODID + "." + this.entityToSpawnName;
+            if (EntityList.stringToClassMapping.containsKey(this.entityToSpawnNameFull))
             {
-                entityToSpawn = (EntityLiving) EntityList
-                      .createEntityByName(entityToSpawnNameFull, parWorld);
-                entityToSpawn.setLocationAndAngles(parX, parY, parZ, 
+            	this.entityToSpawn = (EntityLiving) EntityList
+                      .createEntityByName(this.entityToSpawnNameFull, parWorld);
+            	this.entityToSpawn.setLocationAndAngles(parX, parY, parZ, 
                       MathHelper.wrapAngleTo180_float(parWorld.rand.nextFloat()
                       * 360.0F), 0.0F);
-                parWorld.spawnEntityInWorld(entityToSpawn);
-                entityToSpawn.onSpawnWithEgg((IEntityLivingData)null);
-                entityToSpawn.playLivingSound();
+                parWorld.spawnEntityInWorld(this.entityToSpawn);
+                this.entityToSpawn.onSpawnWithEgg((IEntityLivingData)null);
+                this.entityToSpawn.playLivingSound();
             }
             else
             {
-                //DEBUG
-                System.out.println("Entity not found "+entityToSpawnName);
+                System.out.println("Entity not found: " + this.entityToSpawnName);
             }
         }
       
-        return entityToSpawn;
+        return this.entityToSpawn;
     }
 
 
@@ -215,7 +211,7 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
     @SideOnly(Side.CLIENT)
     public int getColorFromItemStack(ItemStack par1ItemStack, int parColorType)
     {
-        return (parColorType == 0) ? colorBase : colorSpots;
+        return (parColorType == 0) ? this.colorBase : this.colorSpots;
     }
 
     @Override
@@ -230,7 +226,7 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
     // unless you specifically check for localization here and convert
     public String getItemStackDisplayName(ItemStack par1ItemStack)
     {
-        return "Spawn "+entityToSpawnName;
+        return "Spawn " + this.entityToSpawnName;
     }  
 
 
@@ -239,7 +235,7 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
     public void registerIcons(IIconRegister par1IconRegister)
     {
         super.registerIcons(par1IconRegister);
-        theIcon = par1IconRegister.registerIcon(getIconString() + "_overlay");
+        this.theIcon = par1IconRegister.registerIcon(getIconString() + "_overlay");
     }
     
     /**
@@ -249,30 +245,30 @@ public class NullifactorEntityPlacer extends ItemMonsterPlacer
     @SideOnly(Side.CLIENT)
     public IIcon getIconFromDamageForRenderPass(int parDamageVal, int parRenderPass)
     {
-        return parRenderPass > 0 ? theIcon : super.getIconFromDamageForRenderPass(parDamageVal, 
+        return parRenderPass > 0 ? this.theIcon : super.getIconFromDamageForRenderPass(parDamageVal, 
               parRenderPass);
     }
     
     public void setColors(int parColorBase, int parColorSpots)
     {
-     colorBase = parColorBase;
-     colorSpots = parColorSpots;
+    	this.colorBase = parColorBase;
+    	this.colorSpots = parColorSpots;
     }
     
     public int getColorBase()
     {
-     return colorBase;
+     return this.colorBase;
     }
     
     public int getColorSpots()
     {
-     return colorSpots;
+     return this.colorSpots;
     }
     
     public void setEntityToSpawnName(String parEntityToSpawnName)
     {
-        entityToSpawnName = parEntityToSpawnName;
-        entityToSpawnNameFull = Nullifactor.MODID + "." + entityToSpawnName; 
+    	this.entityToSpawnName = parEntityToSpawnName;
+    	this.entityToSpawnNameFull = Nullifactor.MODID + "." + this.entityToSpawnName; 
     }
 
 }

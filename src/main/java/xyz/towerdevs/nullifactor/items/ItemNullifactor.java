@@ -26,10 +26,10 @@ public class ItemNullifactor extends HeliosItem {
 		this.setTextureName("nullifactor:" + unlocalizedName);
 		String modId = "nullifactor";
 		
-		soundRegistry.RegisterResource(modId, "nullifactor.spinup");
-		soundRegistry.RegisterResource(modId, "nullifactor.spindown");
-		soundRegistry.RegisterResource(modId, "nullifactor.ingest");
-		soundRegistry.RegisterResource("minecraft", "random.click");
+		this.soundRegistry.RegisterResource(modId, "nullifactor.spinup");
+		this.soundRegistry.RegisterResource(modId, "nullifactor.spindown");
+		this.soundRegistry.RegisterResource(modId, "nullifactor.ingest");
+		this.soundRegistry.RegisterResource("minecraft", "random.click");
 	}
 	
 	@Override
@@ -40,8 +40,8 @@ public class ItemNullifactor extends HeliosItem {
 	@Override
 	public void onPlayerStoppedUsing(ItemStack stack, World world, EntityPlayer player, int i) {
 		this.tickCounter = 0;
-		soundRegistry.stopSound("nullifactor.spinup");
-		soundRegistry.playSound("nullifactor.spindown");
+		this.soundRegistry.stopSound("nullifactor.spinup");
+		this.soundRegistry.playSound("nullifactor.spindown");
 	}
 	
 	@Override
@@ -63,8 +63,8 @@ public class ItemNullifactor extends HeliosItem {
 			
 			player.setItemInUse(stack, getMaxItemUseDuration(stack));
 			
-			soundRegistry.stopSound("nullifactor.spindown");
-			soundRegistry.playSound("nullifactor.spinup");
+			this.soundRegistry.stopSound("nullifactor.spindown");
+			this.soundRegistry.playSound("nullifactor.spinup");
 		} else {
 			this.playClickSound();
 			return stack;
@@ -75,7 +75,7 @@ public class ItemNullifactor extends HeliosItem {
 	
 	@Override
 	public void onUsingTick(ItemStack stack, EntityPlayer player, int count) {
-		tickCounter++;
+		this.tickCounter++;
 		
 		if (!player.capabilities.isCreativeMode) { 
 			PlayerUtilities.damageItem(player, ResourceItemRegistry.QUANTUMFUELCELL.getItem(), 1);
@@ -95,11 +95,11 @@ public class ItemNullifactor extends HeliosItem {
 			}
 		}
 		
-		if (tickCounter >= 40) {
+		if (this.tickCounter >= 40) {
 			World world = player.getEntityWorld();
-			int radius = tickCounter;
-			double suctionPower = tickCounter / 20;
-			if (tickCounter >= 200)
+			int radius = this.tickCounter;
+			double suctionPower = this.tickCounter / 20;
+			if (this.tickCounter >= 200)
 				radius = 200;
             @SuppressWarnings("unchecked")
 			List<EntityLiving> mobs = world.getEntitiesWithinAABB(EntityLiving.class, player.boundingBox.expand(radius, radius, radius));
@@ -107,7 +107,7 @@ public class ItemNullifactor extends HeliosItem {
             	moveEntityTowardsPlayer(mob, player, suctionPower);
             	mob.spawnExplosionParticle();
             	
-            	double explosChance = random.nextInt(50) + suctionPower;
+            	double explosChance = this.random.nextInt(50) + suctionPower;
             	if (explosChance >= 40) { 
             		
             	}
@@ -172,7 +172,7 @@ public class ItemNullifactor extends HeliosItem {
 	}
 	
 	private void playClickSound() {
-		soundRegistry.stopSound("random.click");
-		soundRegistry.playSound("random.click");
+		this.soundRegistry.stopSound("random.click");
+		this.soundRegistry.playSound("random.click");
 	}
 }

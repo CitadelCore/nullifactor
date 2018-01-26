@@ -14,8 +14,8 @@ public abstract class HeliosMod {
     	this.version = version;
     }
     
-    public String getId() { return modId; };
-    public String getVersion() { return version; };
+    public String getId() { return this.modId; };
+    public String getVersion() { return this.version; };
     
     @EventHandler
     public void fingerprintWarning(FMLFingerprintViolationEvent event) {

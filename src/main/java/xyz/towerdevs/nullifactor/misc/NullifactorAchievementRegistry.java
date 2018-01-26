@@ -57,9 +57,9 @@ public enum NullifactorAchievementRegistry {
 	}
 	
 	public void trigger(EntityPlayer player) {
-		if (achievement == null || player == null)
+		if (this.achievement == null || player == null)
 			return;
 		
-		player.triggerAchievement(achievement);
+		player.triggerAchievement(this.achievement);
 	}
 }

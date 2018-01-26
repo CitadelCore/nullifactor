@@ -17,11 +17,11 @@ public enum ResourceBlockRegistry implements IResourceRegistry {
 	/** Registers a resource block - the texture name should be the same as the unlocalized name. */
 	private ResourceBlockRegistry(String unlocalizedName, Material material) { 
 		this.blockName = unlocalizedName;
-		heliosBlock = new HeliosBlock(unlocalizedName, material, Nullifactor.MODID);
+		this.heliosBlock = new HeliosBlock(unlocalizedName, material, Nullifactor.MODID);
 	}
 	
-	public HeliosBlock getBlock() { return heliosBlock; }
-	public String getUnlocalizedName() { return blockName; }
+	public HeliosBlock getBlock() { return this.heliosBlock; }
+	public String getUnlocalizedName() { return this.blockName; }
 	
 	public static void PostReigsterBlocks() { 
 	}

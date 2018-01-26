@@ -1,7 +1,6 @@
 package xyz.towerdevs.helios.base;
 
 import net.minecraft.block.Block;
-import net.minecraft.tileentity.TileEntity;
 
 public class BlockReference {
 	public Block refBlock;

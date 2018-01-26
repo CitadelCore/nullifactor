@@ -54,7 +54,7 @@ protected SoundRegistry soundRegistry;
 	@Override
 	public void onBlockHarvested(World world, int p_149681_2_, int p_149681_3_, int p_149681_4_, int p_149681_5_, EntityPlayer player) {
 		if (this.brokenAchievement != null)
-			brokenAchievement.trigger(player);
+			this.brokenAchievement.trigger(player);
 	}
 	
 	@SideOnly(Side.CLIENT)

@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import xyz.towerdevs.nullifactor.Nullifactor;
+import xyz.towerdevs.nullifactor.registries.GuiRegistry;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorSingularity;
 
 public class BlockQuantumReactorSingularity extends BlockQuantumBase {
@@ -36,7 +37,7 @@ public class BlockQuantumReactorSingularity extends BlockQuantumBase {
 	        }
 	        else
 	        {
-	            player.openGui(Nullifactor.instance, 0, world, x, y, z);
+	            player.openGui(Nullifactor.instance, GuiRegistry.SINGULARITY.ordinal(), world, x, y, z);
 
 	            return true;
 	        }

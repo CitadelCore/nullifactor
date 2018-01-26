@@ -1,17 +1,36 @@
 package xyz.towerdevs.nullifactor.tileentities;
 
+import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraftforge.common.util.ForgeDirection;
+import xyz.towerdevs.helios.MathUtilities;
 import xyz.towerdevs.nullifactor.items.ItemSingularity;
 import xyz.towerdevs.nullifactor.items.ItemSingularity.Singularities;
+import xyz.towerdevs.nullifactor.items.ItemSingularity.SingularityData;
 
 public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase implements ISidedInventory, IUpdatePlayerListBox {
-	private Singularities singularity;
+	private SingularityData singularity;
 	private ItemStack singularityStack;
+	
+	/** Fuel in the singularity core, in milibuckets. */
+	private float fuelInCore;	
+	/**  Max fuel this fuel core may hold. */
+	private static int maxFuelInCore = 10000;
+	
+	/**  Level of spent fuel in the core, in milibuckets. */
+	private float spentFuelInCore;
+	/**  Max spent fuel this fuel core may hold. */
+	private static int maxSpentFuelInCore = 10000;
+	
+	/**  Whether the fuel core is active. */
+	private boolean isActive = false;
+	
+	private Random random = new Random();
 	
 	@Override
 	public void hookReadNBT(NBTTagCompound nbt) {
@@ -20,6 +39,9 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 		if (nbt.hasKey("SingularityStack")) {
 			NBTTagCompound stackCompound = nbt.getCompoundTag("SingularityStack");
 			this.singularityStack = ItemStack.loadItemStackFromNBT(stackCompound);
+			
+			if (this.singularityStack.getItem() instanceof ItemSingularity)
+				this.singularity = ((ItemSingularity) this.singularityStack.getItem()).getSingularity();
 		}
 	}
 	
@@ -35,6 +57,60 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 		
 	}
 	
+	@Override
+	public void update() {
+		if (!this.worldObj.isRemote) {
+			if (this.isActive && this.hasSingularity()) {
+				this.convertFuel();
+			}
+		}
+	}
+	
+	/** Converts quantum or other fuel into waste products. */
+	private void convertFuel() {
+		if (this.fuelInCore >= this.singularity.fuelPerTick && 
+				!((this.spentFuelInCore + this.singularity.fuelPerTick) > TileEntityQuantumReactorSingularity.maxSpentFuelInCore)) {
+			
+			this.fuelInCore = this.fuelInCore - this.singularity.fuelPerTick;
+			this.spentFuelInCore = this.spentFuelInCore + this.singularity.fuelPerTick;
+			
+			float heatRadiationCoefficient = 1.0F;
+			if (MathUtilities.randomBoolean(this.random, this.singularity.quantumEventChance)) {
+				heatRadiationCoefficient = 1.5F;
+			}
+			
+			this.radiateHeat(this.singularity.heatPerTick * heatRadiationCoefficient);
+		}
+	}
+	
+	/** Inserts the specified amount of quantum fuel into the core. Returns the fuel left over that could not be inserted. */
+	private float insertFuel(float fuel) {
+		float fuelToInsert = Math.min(TileEntityQuantumReactorSingularity.maxFuelInCore, fuel);
+		this.fuelInCore = this.fuelInCore + fuelToInsert;
+		
+		return fuel - fuelToInsert;
+	}
+	
+	/** Dumps all fuel from the core, which will all be lost. */
+	private void removeFuel() {
+		this.fuelInCore = 0;
+	}
+	
+	private void radiateHeat(float heat) {
+		
+	}
+	
+	/** Returns whether this fuel core has a singularity, and is thus active. */
+	public boolean hasSingularity() {
+		if (this.singularity != null && this.singularityStack != null)
+			return true;
+		
+		return false;
+	}
+	
+	public boolean getActive() { return this.isActive; }
+	public void setActive(boolean isActive) { this.isActive = isActive; }
+	
 	// Singularity frames can't melt.
 	@Override
 	public void setTemperature(int temp) {
@@ -48,7 +124,7 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		return singularityStack;
+		return this.singularityStack;
 	}
 
 	@Override
@@ -66,6 +142,9 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 	@Override
 	public void setInventorySlotContents(int p_70299_1_, ItemStack stack) {
 		this.singularityStack = stack;
+		
+		if (this.singularityStack.getItem() instanceof ItemSingularity)
+			this.singularity = ((ItemSingularity) this.singularityStack.getItem()).getSingularity();
 	}
 
 	@Override
@@ -101,10 +180,6 @@ public class TileEntityQuantumReactorSingularity extends TileEntityQuantumBase i
 		if (stack != null && stack.getItem() instanceof ItemSingularity)
 			return true;
 		return false;
-	}
-
-	@Override
-	public void update() {
 	}
 
 	@Override

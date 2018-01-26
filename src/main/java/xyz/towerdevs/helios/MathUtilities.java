@@ -2,6 +2,7 @@ package xyz.towerdevs.helios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,5 +51,10 @@ public class MathUtilities {
         if (ref == null)
         	return null;
         return new BlockReference(ref, pos.blockX, pos.blockY, pos.blockZ);
+	}
+	
+	public static boolean randomBoolean(Random rand, float chance) {
+		int r = rand.nextInt(100) + ((int) chance * 100);
+		return (r >= chance);
 	}
 }

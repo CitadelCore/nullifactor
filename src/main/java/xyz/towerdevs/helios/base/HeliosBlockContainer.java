@@ -25,7 +25,7 @@ public class HeliosBlockContainer extends HeliosBlock implements ITileEntityProv
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		try {
-			return (TileEntity) tileEntityClass.newInstance();
+			return (TileEntity) this.tileEntityClass.newInstance();
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

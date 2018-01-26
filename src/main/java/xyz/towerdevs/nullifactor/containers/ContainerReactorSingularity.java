@@ -1,40 +1,21 @@
 package xyz.towerdevs.nullifactor.containers;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import xyz.towerdevs.helios.base.HeliosContainer;
 import xyz.towerdevs.helios.base.SlotFiltered;
-import xyz.towerdevs.nullifactor.items.ResourceItemRegistry;
-import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorSingularity;
+import xyz.towerdevs.nullifactor.items.ItemSingularity;
 
-public class ContainerReactorSingularity extends Container {
-	InventoryPlayer player;
-	TileEntityQuantumReactorSingularity core;
-	public ContainerReactorSingularity(InventoryPlayer player, TileEntityQuantumReactorSingularity core) {
-		this.player = player;
-		this.core = core;
+public class ContainerReactorSingularity extends HeliosContainer {
+	//TileEntityQuantumReactorSingularity core;
+	public ContainerReactorSingularity(IInventory inventory, TileEntity entity) {
+		super(inventory, entity);
+		//this.core = (TileEntityQuantumReactorSingularity) core;
 		
-		this.addSlotToContainer(new SlotFiltered(core, 0, 80, 23, ResourceItemRegistry.SINGULBEDROCK.getItem().getClass()));
-		
-		for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 9; ++j)
-            {
-                this.addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-            }
-        }
-
-        for (int i = 0; i < 9; ++i)
-        {
-            this.addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
-        }
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return this.core.isUseableByPlayer(player);
+		this.addPlayerInventorySlots();
+		this.addSlotToContainer(new SlotFiltered(this.inventory, 0, 80, 23, ItemSingularity.class));
 	}
 
 	@Override

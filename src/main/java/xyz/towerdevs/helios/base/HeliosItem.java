@@ -51,7 +51,7 @@ public class HeliosItem extends Item implements IHaloRenderItem {
 	
 	@Override
 	public EnumRarity getRarity(ItemStack stack) {
-		return rarity;
+		return this.rarity;
 	}
 	
 	public void setRarity(EnumRarity rarity) {
@@ -162,7 +162,7 @@ public class HeliosItem extends Item implements IHaloRenderItem {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public boolean requiresMultipleRenderPasses() {
-		return (isAnimated || isMulticolour);
+		return (this.isAnimated || this.isMulticolour);
 	}
 
 	@SideOnly(Side.CLIENT)

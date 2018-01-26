@@ -26,10 +26,10 @@ public enum WorldGeneratorRegistry {
 		this(ore, count, chanceToSpawn, minHeight, maxHeight, 0);
 	}
 
-	public WorldGenMinable GetGenerator() { return minable; }
+	public WorldGenMinable GetGenerator() { return this.minable; }
 	
-	public int GetDimId() { return dimId; }
-	public int GetChanceToSpawn() { return chanceToSpawn; }
-	public int GetMinHeight() { return minHeight; }
-	public int GetMaxHeight() { return maxHeight; }
+	public int GetDimId() { return this.dimId; }
+	public int GetChanceToSpawn() { return this.chanceToSpawn; }
+	public int GetMinHeight() { return this.minHeight; }
+	public int GetMaxHeight() { return this.maxHeight; }
 }

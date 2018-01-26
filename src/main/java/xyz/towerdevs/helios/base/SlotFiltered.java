@@ -16,7 +16,7 @@ public class SlotFiltered extends Slot {
 	
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		if (stack.getItem().getClass() == filteredItem)
+		if (stack.getItem().getClass() == this.filteredItem)
 			return true;
 		
 		return false;

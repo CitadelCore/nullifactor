@@ -18,43 +18,43 @@ public class SoundRegistry {
 	}
 	
 	public void RegisterSound(String resource, ISound sound) {
-		sounds.put(resource, sound);
+		this.sounds.put(resource, sound);
 	}
 	
 	public void RegisterResource(String mod, String resource) {
 		ResourceLocation soundRef = SoundUtilities.GetSoundFromMod(mod, resource);
-		soundResources.put(resource, soundRef);
+		this.soundResources.put(resource, soundRef);
 	}
 	
-	public ISound getSound(String resource) { return sounds.get(resource); }
+	public ISound getSound(String resource) { return this.sounds.get(resource); }
 	
-	public HashMap<String, ISound> getRegistry() { return sounds; }
+	public HashMap<String, ISound> getRegistry() { return this.sounds; }
 	
 	public void flushAllSounds() {
-		soundHandler.stopSounds();
-		sounds.clear();
+		this.soundHandler.stopSounds();
+		this.sounds.clear();
 	}
 	
 	public void stopSound(String resource) {
-		if (soundResources.containsKey(resource) && sounds.containsKey(resource)) {
-			ISound currsound = sounds.get(resource);
-			soundHandler.stopSound(currsound);
-			sounds.remove(resource);
+		if (this.soundResources.containsKey(resource) && this.sounds.containsKey(resource)) {
+			ISound currsound = this.sounds.get(resource);
+			this.soundHandler.stopSound(currsound);
+			this.sounds.remove(resource);
 		}
 	}
 	
 	public void playSound(String resource, boolean allowRepeat) {
-		if (soundResources.containsKey(resource) && (!sounds.containsKey(resource) || allowRepeat)) {
-			ResourceLocation soundRef = soundResources.get(resource);
+		if (this.soundResources.containsKey(resource) && (!this.sounds.containsKey(resource) || allowRepeat)) {
+			ResourceLocation soundRef = this.soundResources.get(resource);
 			
 			ISound newSound = PositionedSoundRecord.func_147673_a(soundRef);
-			soundHandler.playSound(newSound);
+			this.soundHandler.playSound(newSound);
 			
-			if (sounds.containsKey(resource)) {
-				sounds.remove(resource);
+			if (this.sounds.containsKey(resource)) {
+				this.sounds.remove(resource);
 			}
 			
-			sounds.put(resource, newSound);
+			this.sounds.put(resource, newSound);
 		}
 	}
 	

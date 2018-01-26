@@ -14,15 +14,15 @@ public class ItemSingularity extends HeliosItem {
 	}
 	
 	public static class SingularityData {
-		int heatPerTick; // Heat produced by this singularity every tick active, in centegrate
-		float fuelPerTick = 5.0F; // mB of fuel consumed per tick
-		float antimatterProductionChance = 0.001F; // Chance every tick this singularity has to produce one unit of antimatter
-		float quantumEventChance = 0.001F; // Chance singularity has every tick to produce a quantum event.
+		public int heatPerTick; // Heat produced by this singularity every tick active, in centegrate
+		public float fuelPerTick = 5.0F; // mB of fuel consumed per tick
+		public float antimatterProductionChance = 0.001F; // Chance every tick this singularity has to produce one unit of antimatter
+		public float quantumEventChance = 0.001F; // Chance singularity has every tick to produce a quantum event.
 		
-		float magneticWearCoefficient = 1.0F; // Multiplier for the wear speed of the containment coils.
+		public float magneticWearCoefficient = 1.0F; // Multiplier for the wear speed of the containment coils.
 		
-		int requiredStartPower = 100000; // Minimum charge the singularity must have to be functional.
-		int baseCoreContainment = 500; // Power in RF it takes, per tick, to contain this singularity. (by the magnetic containment coils).
+		public int requiredStartPower = 100000; // Minimum charge the singularity must have to be functional.
+		public int baseCoreContainment = 500; // Power in RF it takes, per tick, to contain this singularity. (by the magnetic containment coils).
 	}
 	
 	public enum Singularities {

@@ -6,7 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import xyz.towerdevs.helios.base.BlockReference;
 import xyz.towerdevs.helios.base.HeliosBlockContainer;
 import xyz.towerdevs.helios.base.TileEntityReference;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumBase;
@@ -27,7 +26,7 @@ public class BlockQuantumBase extends HeliosBlockContainer {
 			if (base.hasMaster()) {
 				if (base instanceof TileEntityQuantumReactor) {
 					TileEntityQuantumReactor core = (TileEntityQuantumReactor) base;
-					if (core.isCoreMaster() && !core.validateMultiblock(false))
+					if (core.isCoreMaster() && !core.validateMultiblock().isValid)
 						core.destroyMultiblock();
 				} else {
 					if (!base.checkMasterValid())
@@ -53,13 +52,14 @@ public class BlockQuantumBase extends HeliosBlockContainer {
 		TileEntityQuantumBase base = (TileEntityQuantumBase) selfTile;
 		
 		if (!base.hasMaster()) {
-			player.addChatMessage(new ChatComponentText("Tile has no master and is not part of a multiblock structure."));
+			player.addChatMessage(new ChatComponentText("[BASE]: Tile has no master and is not part of a multiblock structure."));
+			return true;
 		}
 		
 		if (base.checkMasterValid()) {
-			player.addChatMessage(new ChatComponentText("Master reactor core has passed structural validation."));
+			player.addChatMessage(new ChatComponentText("[BASE]: Master reactor core has passed structural validation."));
 		} else {
-			player.addChatMessage(new ChatComponentText("Master reactor core failed to pass structural validation."));
+			player.addChatMessage(new ChatComponentText("[BASE]: Master reactor core failed to pass structural validation."));
 		}
 		
 		return true;

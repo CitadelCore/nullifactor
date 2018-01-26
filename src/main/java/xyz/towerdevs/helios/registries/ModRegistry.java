@@ -14,14 +14,14 @@ public enum ModRegistry {
 	private final String name;
 	
 	private ModRegistry(String modName) {
-		name = modName;
+		this.name = modName;
 		if (Loader.isModLoaded(modName)) {
 			System.out.println("[HELIOS] Detected installed mod: " + modName + ".");
 		}
 	}
 	
 	public boolean IsLoaded() {
-		if (Loader.isModLoaded(name)) {
+		if (Loader.isModLoaded(this.name)) {
 			return true;
 		}
 		
@@ -29,7 +29,7 @@ public enum ModRegistry {
 	}
 	
 	public String GetModName() {
-		return name;
+		return this.name;
 	}
 	
 	@SuppressWarnings("rawtypes")

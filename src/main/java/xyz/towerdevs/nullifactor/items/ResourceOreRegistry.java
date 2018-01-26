@@ -20,13 +20,13 @@ public enum ResourceOreRegistry implements IResourceRegistry {
 	/** Registers an ore - the texture name should be the same as the block name */
 	private ResourceOreRegistry(String unlocalizedName, Item droppedItem, float hardness, float resistance, int harvestLevel, int min, int max, NullifactorAchievementRegistry achOverride) {
 		this.oreName = unlocalizedName;
-		heliosBlock = new HeliosOre(unlocalizedName, Material.rock, Nullifactor.MODID, droppedItem, min, max);
-		heliosBlock.setHardness(hardness);
-		heliosBlock.setResistance(resistance);
-		heliosBlock.setHarvestLevel("pickaxe", harvestLevel);
+		this.heliosBlock = new HeliosOre(unlocalizedName, Material.rock, Nullifactor.MODID, droppedItem, min, max);
+		this.heliosBlock.setHardness(hardness);
+		this.heliosBlock.setResistance(resistance);
+		this.heliosBlock.setHarvestLevel("pickaxe", harvestLevel);
 		
 		if (achOverride != null)
-			heliosBlock.setBrokenAchievement(achOverride);
+			this.heliosBlock.setBrokenAchievement(achOverride);
 	}
 	
 	private ResourceOreRegistry(String unlocalizedName, Item droppedItem, float hardness, float resistance, int harvestLevel, int min, int max) {
@@ -37,6 +37,6 @@ public enum ResourceOreRegistry implements IResourceRegistry {
 		this(unlocalizedName, droppedItem, hardness, resistance, harvestLevel, 1, 1);
 	}
 	
-	public HeliosBlock getOre() { return heliosBlock; }
-	public String getUnlocalizedName() { return oreName; }
+	public HeliosBlock getOre() { return this.heliosBlock; }
+	public String getUnlocalizedName() { return this.oreName; }
 }

@@ -16,6 +16,6 @@ public class RenderMorko extends RenderLiving {
 	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return morkoTexture;
+		return this.morkoTexture;
 	}
 }

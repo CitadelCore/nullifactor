@@ -78,12 +78,12 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 	/** Registers an item - the texture name should be the same as the item name */
 	private ResourceItemRegistry(String unlocalizedName, int maxStackSize, int maxDamage, Class<? extends HeliosItem> itemClass) {
 		this.itemName = unlocalizedName;
-		heliosItem = ItemUtilities.newResourceItem(unlocalizedName, Nullifactor.MODID + ":" + unlocalizedName, itemClass);
-		heliosItem.setMaxStackSize(maxStackSize);
-		heliosItem.registerInformationText();
+		this.heliosItem = ItemUtilities.newResourceItem(unlocalizedName, Nullifactor.MODID + ":" + unlocalizedName, itemClass);
+		this.heliosItem.setMaxStackSize(maxStackSize);
+		this.heliosItem.registerInformationText();
 		
 		if (maxDamage != -1)
-			heliosItem.setMaxDamage(maxDamage);
+			this.heliosItem.setMaxDamage(maxDamage);
 	}
 	
 	private ResourceItemRegistry(String unlocalizedName, int maxStackSize, int maxDamage) {
@@ -116,11 +116,11 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 	}
 	
 	public void registerAsAvaritiaSingularity(int primaryColour, int secondaryColour) {
-		heliosItem.registerItemAnimation("avaritia:singularity", "avaritia:singularity2");
-		heliosItem.registerAvaritiaSpecialHalo(4, false, 0xFF000000, AvaritiaHaloType.REGULAR);
-		heliosItem.registerItemMulticolour(primaryColour, secondaryColour);
+		this.heliosItem.registerItemAnimation("avaritia:singularity", "avaritia:singularity2");
+		this.heliosItem.registerAvaritiaSpecialHalo(4, false, 0xFF000000, AvaritiaHaloType.REGULAR);
+		this.heliosItem.registerItemMulticolour(primaryColour, secondaryColour);
 	}
 	
-	public HeliosItem getItem() { return heliosItem; }
-	public String getUnlocalizedName() { return itemName; }
+	public HeliosItem getItem() { return this.heliosItem; }
+	public String getUnlocalizedName() { return this.itemName; }
 }
