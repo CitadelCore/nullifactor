@@ -1,16 +1,15 @@
 package xyz.towerdevs.helios.base;
 
-import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 
-public class BlockReference {
-	public Block refBlock;
+public class TileEntityReference {
 	public int x;
 	public int y;
 	public int z;
 	
-	public BlockReference(Block block, int x, int y, int z) {
-		this.refBlock = block;
+	public TileEntity refTileEntity;
+	public TileEntityReference(TileEntity ent, int x, int y, int z) {
+		this.refTileEntity = ent;
 		this.x = x;
 		this.y = y;
 		this.z = z;

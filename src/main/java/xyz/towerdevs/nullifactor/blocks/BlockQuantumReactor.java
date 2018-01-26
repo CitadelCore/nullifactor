@@ -12,7 +12,6 @@ import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumBase;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactor;
 
 public class BlockQuantumReactor extends BlockQuantumBase {
-
 	public static final BlockQuantumReactor instance = new BlockQuantumReactor();
 	public BlockQuantumReactor() {
 		super("quantum_reactor", Material.iron, "nullifactor", TileEntityQuantumReactor.class);

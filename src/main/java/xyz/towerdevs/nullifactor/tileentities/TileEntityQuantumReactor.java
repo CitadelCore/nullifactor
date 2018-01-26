@@ -3,6 +3,9 @@ package xyz.towerdevs.nullifactor.tileentities;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.brandon3055.brandonscore.common.handlers.ProcessHandler;
+import com.brandon3055.draconicevolution.common.tileentities.multiblocktiles.reactor.ReactorExplosion;
+
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -20,6 +23,8 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 	
 	private BlockReference minBlock;
 	private BlockReference maxBlock;
+	
+	private ReactorExplosion explosionProcess;
 	
 	public void addAdjacentReactor(TileEntityQuantumReactor reactor) {
 		this.adjacentReactors.add(reactor);
@@ -191,18 +196,19 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 		}
 		
 		// Verify content of the inner cores
-		ConnectedReactorResult cont = this.getConnectedReactors(res.radiusFound - 1);
-		List<TileEntityQuantumReactor> contadj = cont.reactors;
+		List<TileEntityQuantumReactor> contadj = this.getReactorsWithinRadius(res.radiusFound - 2);
 		
 		for (int i = 0; i < contadj.size(); i++) {
 			TileEntityQuantumReactor core = contadj.get(i);
 			List<TileEntityQuantumBase> coreBlocks = core.getBlocksInColumn();
 			
 			for (int i2 = 0; i2 < coreBlocks.size(); i2++) {
-				TileEntityQuantumBase coreBlock = coreBlocks.get(i2);
-				if (coreBlock == null) {
-					this.logIfVerbose("Invalid module on core " + i + "! The inner reactor chamber must contain singularity frames only with no air blocks.", verbose);
-					return false;
+				if (i2 != 0) {
+					TileEntityQuantumBase coreBlock = coreBlocks.get(i2);
+					if (coreBlock == null || !(coreBlock instanceof TileEntityQuantumReactorSingularity)) {
+						this.logIfVerbose("Invalid module on core " + i + "! The inner reactor chamber must contain singularity frames only with no air blocks.", verbose);
+						return false;
+					}
 				}
 			}
 		}
@@ -266,5 +272,11 @@ public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 		}
 		
 		return blocksFiltered;
+	}
+	
+	/** Fails the reactor, explosively. If DE is installed it will use the ReactorExplosion from it, otherwise a typical Explosion will be used as a fallback. */
+	public void failExplosively() {
+		ProcessHandler.addProcess(new ReactorExplosion(this.worldObj, this.xCoord, this.yCoord, this.zCoord, 50F));
+		
 	}
 }

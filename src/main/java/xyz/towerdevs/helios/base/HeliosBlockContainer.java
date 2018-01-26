@@ -83,4 +83,12 @@ public class HeliosBlockContainer extends HeliosBlock implements ITileEntityProv
 		
 		return super.getIcon(world, x, y, z, side);
 	}
+	
+	@Override
+	public boolean onBlockEventReceived(World world, int x, int y, int z, int p_149696_5_, int p_149696_6_)
+    {
+        super.onBlockEventReceived(world, x, y, z, p_149696_5_, p_149696_6_);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        return tileentity != null ? tileentity.receiveClientEvent(p_149696_5_, p_149696_6_) : false;
+    }
 }

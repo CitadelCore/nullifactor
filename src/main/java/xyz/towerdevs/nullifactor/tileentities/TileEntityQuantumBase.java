@@ -10,6 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import xyz.towerdevs.helios.base.BlockReference;
 import xyz.towerdevs.helios.base.HeliosMachineTileEntity;
+import xyz.towerdevs.helios.base.TileEntityReference;
 
 public class TileEntityQuantumBase extends HeliosMachineTileEntity {
 	private int masterX = 0, masterY = 0, masterZ = 0;
@@ -92,9 +93,16 @@ public class TileEntityQuantumBase extends HeliosMachineTileEntity {
 		return false;
 	}
 	
-	/** Retrieves the coordinates of the master, as a BlockReference. */
-	public BlockReference getMaster() {
-		return new BlockReference(null, this.masterX, this.masterY, this.masterZ);
+	/** Retrieves the master, as a TileEntityReference. */
+	public TileEntityReference getMaster() {
+		
+		TileEntity master = this.worldObj.getTileEntity(this.masterX, this.masterY, this.masterZ);
+		if (master != null && master instanceof TileEntityQuantumReactor) {
+			TileEntityQuantumReactor core = (TileEntityQuantumReactor) master;
+			return new TileEntityReference(core, this.masterX, this.masterY, this.masterZ);
+		}
+		
+		return new TileEntityReference(null, this.masterX, this.masterY, this.masterZ);
 	} 
 	
 	/** Sets the multiblock master of this block to the tile entity at the specified coordinates. */
@@ -145,8 +153,8 @@ public class TileEntityQuantumBase extends HeliosMachineTileEntity {
 			TileEntity tile = world.getTileEntity(this.xCoord + xoffset, this.yCoord + yoffset, this.zCoord + zoffset);
 			if (tile != null && tile instanceof TileEntityQuantumBase) {
 				TileEntityQuantumBase machine = (TileEntityQuantumBase)tile;
-				BlockReference machineMaster = machine.getMaster();
-				BlockReference thisMaster = this.getMaster();
+				TileEntityReference machineMaster = machine.getMaster();
+				TileEntityReference thisMaster = this.getMaster();
 				
 				if (sameMasterOnly) {
 					if (machineMaster.x == thisMaster.x && machineMaster.y == thisMaster.y && machineMaster.z == thisMaster.z) {

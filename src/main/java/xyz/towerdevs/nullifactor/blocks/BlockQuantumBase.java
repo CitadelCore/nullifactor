@@ -8,6 +8,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import xyz.towerdevs.helios.base.BlockReference;
 import xyz.towerdevs.helios.base.HeliosBlockContainer;
+import xyz.towerdevs.helios.base.TileEntityReference;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumBase;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactor;
 
@@ -51,6 +52,10 @@ public class BlockQuantumBase extends HeliosBlockContainer {
 		
 		TileEntityQuantumBase base = (TileEntityQuantumBase) selfTile;
 		
+		if (!base.hasMaster()) {
+			player.addChatMessage(new ChatComponentText("Tile has no master and is not part of a multiblock structure."));
+		}
+		
 		if (base.checkMasterValid()) {
 			player.addChatMessage(new ChatComponentText("Master reactor core has passed structural validation."));
 		} else {
@@ -67,7 +72,7 @@ public class BlockQuantumBase extends HeliosBlockContainer {
 			TileEntityQuantumBase base = (TileEntityQuantumBase) selfTile;
 			
 			if (base.hasMaster()) {
-				BlockReference coord = base.getMaster();
+				TileEntityReference coord = base.getMaster();
 				TileEntity master = world.getTileEntity(coord.x, coord.y, coord.z);
 				
 				if (master != null && master instanceof TileEntityQuantumReactor) {

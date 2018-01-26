@@ -6,6 +6,7 @@ import xyz.towerdevs.helios.base.HeliosItem;
 import xyz.towerdevs.helios.base.HeliosItem.AvaritiaHaloType;
 import xyz.towerdevs.helios.interfaces.IResourceRegistry;
 import xyz.towerdevs.nullifactor.Nullifactor;
+import xyz.towerdevs.nullifactor.models.SingularityData;
 import fox.spiteful.avaritia.items.LudicrousItems;
 
 public enum ResourceItemRegistry implements IResourceRegistry {
@@ -15,10 +16,10 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 	DENSEBEDROCKGEM("bedrock_dense_gem"),
 	
 	// Singularities
-	SINGULBEDROCK("bedrock_singularity"),
-	SINGULDIAMOND("diamond_entangled_singularity"),
-	SINGULEMERALD("emerald_entangled_singularity"),
-	SINGULCORRUPTED("corrupted_singularity"),
+	SINGULBEDROCK("bedrock_singularity", ItemSingularity.class),
+	SINGULDIAMOND("diamond_entangled_singularity", ItemSingularity.class),
+	SINGULEMERALD("emerald_entangled_singularity", ItemSingularity.class),
+	SINGULCORRUPTED("corrupted_singularity", ItemSingularity.class),
 	
 	// Emerald
 	EMERALDINGOT("emerald_ingot"),
@@ -76,9 +77,9 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 	public static final ResourceItemRegistry[] itemRegistry = values();
 	
 	/** Registers an item - the texture name should be the same as the item name */
-	private ResourceItemRegistry(String unlocalizedName, int maxStackSize, int maxDamage) {
+	private ResourceItemRegistry(String unlocalizedName, int maxStackSize, int maxDamage, Class<? extends HeliosItem> itemClass) {
 		this.itemName = unlocalizedName;
-		heliosItem = ItemUtilities.newResourceItem(unlocalizedName, Nullifactor.MODID + ":" + unlocalizedName);
+		heliosItem = ItemUtilities.newResourceItem(unlocalizedName, Nullifactor.MODID + ":" + unlocalizedName, itemClass);
 		heliosItem.setMaxStackSize(maxStackSize);
 		heliosItem.registerInformationText();
 		
@@ -86,8 +87,16 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 			heliosItem.setMaxDamage(maxDamage);
 	}
 	
+	private ResourceItemRegistry(String unlocalizedName, int maxStackSize, int maxDamage) {
+		this(unlocalizedName, maxStackSize, maxDamage, HeliosItem.class);
+	}
+	
+	private ResourceItemRegistry(String unlocalizedName, Class<? extends HeliosItem> itemClass) {
+		this(unlocalizedName, 64, -1, itemClass);
+	}
+	
 	private ResourceItemRegistry(String unlocalizedName) {
-		this(unlocalizedName, 64, -1);
+		this(unlocalizedName, HeliosItem.class);
 	}
 	
 	public static void PostReigsterItems() {
@@ -100,6 +109,11 @@ public enum ResourceItemRegistry implements IResourceRegistry {
 		SINGULDIAMOND.registerAsAvaritiaSingularity(0x1C1C1C, 0x3FBDBD);
 		SINGULEMERALD.registerAsAvaritiaSingularity(0x1C1C1C, 0x55C144);
 		SINGULCORRUPTED.registerAsAvaritiaSingularity(0x1C1C1C, 0xCE480A);
+		
+		((ItemSingularity) SINGULBEDROCK.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
+		((ItemSingularity) SINGULDIAMOND.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
+		((ItemSingularity) SINGULEMERALD.heliosItem).setSingularity(SingularityData.Singularities.BEDROCK);
+		((ItemSingularity) SINGULCORRUPTED.heliosItem).setSingularity(SingularityData.Singularities.CORRUPTED);
 	}
 	
 	public void registerAsAvaritiaSingularity(int primaryColour, int secondaryColour) {

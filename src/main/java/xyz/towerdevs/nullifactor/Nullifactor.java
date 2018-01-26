@@ -22,6 +22,7 @@ import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorController;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPowerTap;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPylon;
 import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorPylonCap;
+import xyz.towerdevs.nullifactor.blocks.BlockQuantumReactorSingularity;
 import xyz.towerdevs.nullifactor.entities.EntityMorko;
 import xyz.towerdevs.nullifactor.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.items.NullifactorEntityPlacer;
@@ -36,14 +37,17 @@ import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorContainmen
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorController;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPowerTap;
 import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorPylon;
+import xyz.towerdevs.nullifactor.tileentities.TileEntityQuantumReactorSingularity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -99,6 +103,7 @@ public final class Nullifactor extends HeliosMod
 		BlockHighDensitySteel.instance.setCreativeTab(resourceCreativeTab);
 		GameRegistry.registerBlock(BlockHighDensitySteel.instance, "high_density_steel");
 		GameRegistry.registerBlock(BlockQuantumReactor.instance, "quantum_reactor");
+		GameRegistry.registerBlock(BlockQuantumReactorSingularity.instance, "quantum_reactor_singularity");
 		GameRegistry.registerBlock(BlockQuantumReactorPylon.instance, "quantum_reactor_pylon");
 		GameRegistry.registerBlock(BlockQuantumReactorPylonCap.instance, "quantum_reactor_pylon_cap");
 		GameRegistry.registerBlock(BlockQuantumReactorContainmentElectromagnet.instance, "quantum_reactor_containment_electromagnet");
@@ -135,6 +140,7 @@ public final class Nullifactor extends HeliosMod
     @EventHandler
     public void load(FMLInitializationEvent event) {
     	GameRegistry.registerTileEntity(TileEntityQuantumReactor.class, "tile_entity_quantum_reactor");
+    	GameRegistry.registerTileEntity(TileEntityQuantumReactorSingularity.class, "tile_entity_quantum_reactor_singularity");
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorContainmentElectromagnet.class, "tile_entity_quantum_reactor_containment_electromagnet");
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorController.class, "tile_entity_quantum_reactor_controller");
     	GameRegistry.registerTileEntity(TileEntityQuantumReactorPowerTap.class, "tile_entity_quantum_reactor_power_tap");
