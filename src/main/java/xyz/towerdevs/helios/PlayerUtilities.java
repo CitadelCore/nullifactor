@@ -3,7 +3,7 @@ package xyz.towerdevs.helios;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import xyz.towerdevs.helios.base.InventoryItem;
+import xyz.towerdevs.helios.instantiable.InventoryItem;
 
 public class PlayerUtilities {
 	public static boolean playerHasItem(EntityPlayer player, Item item) {

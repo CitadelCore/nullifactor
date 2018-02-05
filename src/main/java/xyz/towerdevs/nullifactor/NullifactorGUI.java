@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import xyz.towerdevs.nullifactor.registries.GuiRegistry;
+import xyz.towerdevs.nullifactor.common.registries.GuiRegistry;
 
 public class NullifactorGUI implements IGuiHandler {
 

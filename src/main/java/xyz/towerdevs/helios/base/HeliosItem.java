@@ -3,6 +3,7 @@ import xyz.towerdevs.helios.registries.SoundRegistry;
 
 import java.util.List;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.render.IHaloRenderItem;
@@ -46,7 +47,8 @@ public class HeliosItem extends Item implements IHaloRenderItem {
 	private boolean hasEnchantmentEffect = false;
 	
 	public HeliosItem() {
-		this.soundRegistry = new SoundRegistry();
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
+			this.soundRegistry = new SoundRegistry();
 	}
 	
 	@Override

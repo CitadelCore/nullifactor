@@ -1,7 +1,6 @@
 package xyz.towerdevs.helios.registries;
 
 import java.util.HashMap;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -11,11 +10,7 @@ import xyz.towerdevs.helios.SoundUtilities;
 public class SoundRegistry {
 	private HashMap<String, ISound> sounds = new HashMap<String, ISound>();
 	private HashMap<String, ResourceLocation> soundResources = new HashMap<String, ResourceLocation>();
-	private SoundHandler soundHandler;
-	
-	public SoundRegistry() {
-		this.soundHandler = Minecraft.getMinecraft().getSoundHandler();
-	}
+	public static SoundHandler soundHandler;
 	
 	public void RegisterSound(String resource, ISound sound) {
 		this.sounds.put(resource, sound);
@@ -31,24 +26,24 @@ public class SoundRegistry {
 	public HashMap<String, ISound> getRegistry() { return this.sounds; }
 	
 	public void flushAllSounds() {
-		this.soundHandler.stopSounds();
+		soundHandler.stopSounds();
 		this.sounds.clear();
 	}
 	
 	public void stopSound(String resource) {
 		if (this.soundResources.containsKey(resource) && this.sounds.containsKey(resource)) {
 			ISound currsound = this.sounds.get(resource);
-			this.soundHandler.stopSound(currsound);
+			soundHandler.stopSound(currsound);
 			this.sounds.remove(resource);
 		}
 	}
 	
 	public void playSound(String resource, boolean allowRepeat) {
-		if (this.soundResources.containsKey(resource) && (!this.sounds.containsKey(resource) || allowRepeat)) {
+		if (soundHandler != null && this.soundResources.containsKey(resource) && (!this.sounds.containsKey(resource) || allowRepeat)) {
 			ResourceLocation soundRef = this.soundResources.get(resource);
 			
 			ISound newSound = PositionedSoundRecord.func_147673_a(soundRef);
-			this.soundHandler.playSound(newSound);
+			soundHandler.playSound(newSound);
 			
 			if (this.sounds.containsKey(resource)) {
 				this.sounds.remove(resource);

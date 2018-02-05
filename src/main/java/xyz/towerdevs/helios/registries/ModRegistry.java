@@ -6,7 +6,11 @@ public enum ModRegistry {
 	EXTRAUTILITIES("ExtraUtilities"),
 	AVARITIA("Avaritia"),
 	DRACONICEVOLUTION("DraconicEvolution"),
-	//ROTARYCRAFT("RotaryCraft"),
+	THERMALEXPANSION("ThermalExpansion"),
+	THERMALFOUNDATION("ThermalFoundation"),
+	THERMALDYNAMICS("ThermalDynamics"),
+	COFHCORE("CoFHCore"),
+	ROTARYCRAFT("RotaryCraft"),
 	
 	;
 	

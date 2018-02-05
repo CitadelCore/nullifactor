@@ -9,9 +9,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import xyz.towerdevs.helios.base.BlockReference;
+import xyz.towerdevs.helios.instantiable.BlockReference;
 
 public class MathUtilities {
+	public static final Random random = new Random();
+	
 	/* Returns the pythagorean floor of three doubles. */
 	public static double py3d(double x, double y, double z) {
 		double value;
@@ -53,8 +55,8 @@ public class MathUtilities {
         return new BlockReference(ref, pos.blockX, pos.blockY, pos.blockZ);
 	}
 	
-	public static boolean randomBoolean(Random rand, float chance) {
-		int r = rand.nextInt(100) + ((int) chance * 100);
-		return (r >= chance);
+	public static boolean randomBoolean(float chance) {
+		int r = random.nextInt(100) + ((int) chance * 100);
+		return (r < (chance * 100));
 	}
 }

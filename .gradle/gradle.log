@@ -5,219 +5,29 @@
  R4wk, ZeuX, IngisKahn, bspkrs
  MCP Data version : unknown
 ****************************
-:extractMcpData
-:getVersionJson
-:extractUserDev
-Download http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.7.10-10.13.4.1558-1.7.10/forge-1.7.10-10.13.4.1558-1.7.10-userdev.jar
-:genSrgs
-:extractNatives
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1.pom
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/parent/2.9.1/parent-2.9.1.pom
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5.pom
-Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16.pom
-Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5.pom
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-windows.jar
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-32.jar
-:getAssetsIndex
-:getAssets
-Current status: 2/686   0%
-Current status: 20/686   2%
-Current status: 32/686   4%
-Current status: 34/686   4%
-Current status: 38/686   5%
-Current status: 50/686   7%
-Current status: 57/686   8%
-Current status: 65/686   9%
-Current status: 72/686   10%
-Current status: 84/686   12%
-Current status: 104/686   15%
-Current status: 121/686   17%
-Current status: 125/686   18%
-Current status: 127/686   18%
-Current status: 129/686   18%
-Current status: 145/686   21%
-Current status: 174/686   25%
-Current status: 205/686   29%
-Current status: 238/686   34%
-Current status: 256/686   37%
-Current status: 261/686   38%
-Current status: 263/686   38%
-Current status: 267/686   38%
-Current status: 286/686   41%
-Current status: 297/686   43%
-Current status: 299/686   43%
-Current status: 301/686   43%
-Current status: 301/686   43%
-Current status: 323/686   47%
-Current status: 337/686   49%
-Current status: 359/686   52%
-Current status: 364/686   53%
-Current status: 366/686   53%
-Current status: 370/686   53%
-Current status: 378/686   55%
-Current status: 392/686   57%
-Current status: 404/686   58%
-Current status: 411/686   59%
-Current status: 416/686   60%
-Current status: 418/686   60%
-Current status: 422/686   61%
-Current status: 424/686   61%
-Current status: 426/686   62%
-Current status: 437/686   63%
-Current status: 451/686   65%
-Current status: 458/686   66%
-Current status: 462/686   67%
-Current status: 468/686   68%
-Current status: 478/686   69%
-Current status: 483/686   70%
-Current status: 487/686   70%
-Current status: 503/686   73%
-Current status: 506/686   73%
-Current status: 509/686   74%
-Current status: 515/686   75%
-Current status: 517/686   75%
-Current status: 522/686   76%
-Current status: 522/686   76%
-Current status: 528/686   76%
-Current status: 530/686   77%
-Current status: 532/686   77%
-Current status: 535/686   77%
-Current status: 539/686   78%
-Current status: 548/686   79%
-Current status: 549/686   80%
-Current status: 551/686   80%
-Current status: 555/686   80%
-Current status: 586/686   85%
-Current status: 613/686   89%
-Current status: 631/686   91%
-Current status: 637/686   92%
-Current status: 638/686   93%
-Current status: 639/686   93%
-Current status: 643/686   93%
-Current status: 656/686   95%
-Current status: 662/686   96%
-Current status: 675/686   98%
-Current status: 678/686   98%
-Current status: 680/686   99%
-Current status: 684/686   99%
-:makeStart
-Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.pom
-Download http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
-Download http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.pom
-Download http://repo1.maven.org/maven2/com/typesafe/config/1.2.1/config-1.2.1.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2/scala-continuations-library_2.11-1.0.2.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2/scala-continuations-plugin_2.11.1-1.0.2.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.pom
-Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.pom
-Download https://libraries.minecraft.net/com/mojang/realms/1.3.5/realms-1.3.5.pom
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.pom
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/33/commons-parent-33.pom
-Download http://repo1.maven.org/maven2/java3d/vecmath/1.3.1/vecmath-1.3.1.pom
-Download http://repo1.maven.org/maven2/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.pom
-Download https://libraries.minecraft.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.pom
-Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.pom
-Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.pom
-Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.pom
-Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.pom
-Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.pom
-Download http://repo1.maven.org/maven2/io/netty/netty-all/4.0.10.Final/netty-all-4.0.10.Final.pom
-Download http://repo1.maven.org/maven2/io/netty/netty-parent/4.0.10.Final/netty-parent-4.0.10.Final.pom
-Download http://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.pom
-Download http://repo1.maven.org/maven2/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.pom
-Download http://repo1.maven.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.pom
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/25/commons-parent-25.pom
-Download http://repo1.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.pom
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-parent/32/commons-parent-32.pom
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.pom
-Download http://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.pom
-Download https://libraries.minecraft.net/com/mojang/authlib/1.5.16/authlib-1.5.16.pom
-Download http://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.0-beta9/log4j-api-2.0-beta9.pom
-Download http://repo1.maven.org/maven2/org/apache/logging/log4j/log4j/2.0-beta9/log4j-2.0-beta9.pom
-Download http://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.0-beta9/log4j-core-2.0-beta9.pom
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.1/lwjgl-2.9.1.pom
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.1/lwjgl_util-2.9.1.pom
-Download https://libraries.minecraft.net/tv/twitch/twitch/5.16/twitch-5.16.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-actors/2.11.0/scala-actors-2.11.0.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom
-Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom
-Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar
-Download http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar
-Download http://repo1.maven.org/maven2/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.jar
-Download http://repo1.maven.org/maven2/com/typesafe/config/1.2.1/config-1.2.1.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2/scala-continuations-library_2.11-1.0.2.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2/scala-continuations-plugin_2.11.1-1.0.2.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar
-Download http://files.minecraftforge.net/maven/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar
-Download http://files.minecraftforge.net/maven/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar
-Download http://files.minecraftforge.net/maven/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar
-Download http://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.jar
-Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.jar
-Download https://libraries.minecraft.net/com/mojang/realms/1.3.5/realms-1.3.5.jar
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar
-Download http://repo1.maven.org/maven2/java3d/vecmath/1.3.1/vecmath-1.3.1.jar
-Download http://repo1.maven.org/maven2/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar
-Download https://libraries.minecraft.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar
-Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar
-Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.jar
-Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar
-Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar
-Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar
-Download http://repo1.maven.org/maven2/io/netty/netty-all/4.0.10.Final/netty-all-4.0.10.Final.jar
-Download http://repo1.maven.org/maven2/com/google/guava/guava/17.0/guava-17.0.jar
-Download http://repo1.maven.org/maven2/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar
-Download http://repo1.maven.org/maven2/commons-io/commons-io/2.4/commons-io-2.4.jar
-Download http://repo1.maven.org/maven2/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar
-Download http://repo1.maven.org/maven2/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar
-Download https://libraries.minecraft.net/com/mojang/authlib/1.5.16/authlib-1.5.16.jar
-Download http://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api/2.0-beta9/log4j-api-2.0-beta9.jar
-Download http://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core/2.0-beta9/log4j-core-2.0-beta9.jar
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl/2.9.1/lwjgl-2.9.1.jar
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl_util/2.9.1/lwjgl_util-2.9.1.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch/5.16/twitch-5.16.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/scala-actors/2.11.0/scala-actors-2.11.0.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar
-Download http://repo1.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-linux.jar
-Download http://repo1.maven.org/maven2/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-osx.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-64.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-osx.jar
-Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-64.jar
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-linux.jar
-Download http://repo1.maven.org/maven2/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-osx.jar
-[ant:javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
-[ant:javac] 1 warning
-:downloadMcpTools
-:downloadClient
-:downloadServer
-:mergeJars
-:deobfuscateJar
-Applying SpecialSource...
-Applying Exceptor...
-:decompile
-:processSources
-Injecting fml files
-Applying fml patches
-Applying forge patches
-:remapJar
-:extractMinecraftSrc
-:recompMinecraftNote: Some input files use or override a deprecated API.
-Note: Recompile with -Xlint:deprecation for details.
-Note: Some input files use unchecked or unsafe operations.
-Note: Recompile with -Xlint:unchecked for details.
+:compileApiJava UP-TO-DATE
+:processApiResources UP-TO-DATE
+:apiClasses UP-TO-DATE
+:sourceMainJava
+:compileJavawarning: [options] bootstrap class path not set in conjunction with -source 1.6
+1 warning
 
-:repackMinecraft
-:setupDecompWorkspace
+:processResources UP-TO-DATE
+:classes
+:jar
+:compileTestJava UP-TO-DATE
+:processTestResources UP-TO-DATE
+:testClasses UP-TO-DATE
+:test UP-TO-DATE
+:extractMcpData UP-TO-DATE
+:getVersionJson
+:extractUserDev UP-TO-DATE
+:genSrgs SKIPPED
+:reobf
+:assemble
+:check UP-TO-DATE
+:build
 
 BUILD SUCCESSFUL
 
-Total time: 18 mins 43.6 secs
+Total time: 14.519 secs

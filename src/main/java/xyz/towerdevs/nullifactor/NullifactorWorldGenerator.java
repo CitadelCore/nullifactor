@@ -6,6 +6,7 @@ import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import xyz.towerdevs.nullifactor.common.registries.WorldGeneratorRegistry;
 
 public class NullifactorWorldGenerator implements IWorldGenerator {
 	@Override

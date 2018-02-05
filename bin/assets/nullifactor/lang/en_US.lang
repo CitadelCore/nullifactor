@@ -1,27 +1,42 @@
 item.the_nullifactor.name=The Nullifactor
+item.the_nullifactor.tooltip=What do you get when you combine a wave machine, a turbofan, and a Qube reactor? This thing.
+
 item.bedrock_dense.name=Dense Bedrock Alloy Ingot
 item.bedrock_ultradense.name=Ultra-dense Bedrock Alloy Ingot
-item.bedrock_singularity.name=Unstable Singularity
-item.corrupted_singularity.name=Corrupted Singularity
+
 item.bedrock_dense_gem.name=Dense Bedrock Gem
 
+item.bedrock_singularity.name=Unstable Singularity
 item.bedrock_singularity.tooltip=Orders of magnitude denser than all of the collective matter in the known universe.
+
+item.corrupted_singularity.name=Corrupted Singularity
 item.corrupted_singularity.tooltip=A deep sense of unease stirs within you as you look into its firey, gaping maw.
 
 item.alloy_diamond_emerald.name=Diamond-Emerald Alloy
 item.alloy_diamond_emerald_panel.name=Diamond-Emerald Alloy Panel
+
 item.alloy_diamond_emerald_fuel.name=Diamond-Emerald Fuel Unit
+item.alloy_diamond_emerald_fuel.tooltip=Diamond and emerald infused with Quantanium, this is the ultimate fuel.
+
 item.depleted_diamond_emerald_fuel.name=Depleted Diamond-Emerald Fuel Unit
+item.depleted_diamond_emerald_fuel.tooltip=Useless. Or is it?
 
 item.diamond_entangled_singularity.name=Diamond Singularity
 item.diamond_ingot.name=Diamond Alloy Ingot
 
 item.emerald_entangled_singularity.name=Emerald Singularity
+
 item.emerald_ingot.name=Emerald Alloy Ingot
 
 item.quantanium_gem.name=Quantanium Gem
+item.quantanium_gem.tooltip=Shiny, but you probably shouldn't get too close to it.
+
 item.quantanium_ingot.name=Quantanium Alloy Ingot
+item.quantanium_ingot.tooltip=You can feel its radiant energy many blocks away now.
+
 item.quantanium_raw.name=Unrefined Quantanium
+item.quantanium_raw.tooltip=Raw and contaminated, this Quantanium needs refinement before it'll be useful for anything.
+
 item.quantanium_rod.name=Quantanium Alloy Rod
 item.quantanium_panel.name=Quantanium Base Panel
 
@@ -32,43 +47,69 @@ item.asbestos_brick.name=Asbestos Brick
 item.asbestos_brick.tooltip=Relatively safe. We think.
 
 item.quantum_fuelcell.name=Quantum Fuel Cell
+item.quantum_fuelcell.tooltip=The perfect compromise of portability and power.
+
 item.depleted_fuelcell.name=Depleted Fuel Cell
+
 item.base_fuelcell.name=Fuel Cell Enclosure
 
 item.high_density_alloy.name=High-Density Alloy Ingot
-item.high_density_alloy_panel.name=High-Density Alloy Panel
+item.high_density_alloy.tooltip=This ingot is comparable to Neutronium in its density and size...
 
-item.quantanium_circuit.name=Quantanium Circuit
-item.quantanium_control_module.name=Quantanium Control Module
-item.quantanium_power_module.name=Quantanium Power Module
+item.high_density_alloy_panel.name=High-Density Alloy Panel
+item.high_density_alloy_panel.tooltip=How you forged this is a mystery, but now you have a way of shielding denser than ever...
+
 item.testtube_blood.name=Test Tube (Blood)
 item.testtube_smv.name=Test Tube (SMV)
 
-item.diamond_blade.name=Diamond Blade
-item.diamond_chopper.name=Diamond Chopper
-item.diamond_turbine.name=Diamond Turbine
-item.diamond_compound_turbine.name=Diamond Compound Turbine
-item.diamond_saw.name=Diamond Saw
-item.diamond_turbofan.name=Macerator Module
+item.shielding_plate.name=Shielding Plate
+item.superconducting_plate.name=Superconducting Plate
+
+item.crystal_matrix_core.name=Crystal Matrix Core
+item.crystal_matrix_core.tooltip=The power of this core surpasses your wildest dreams.
+
+item.neutronium_core.name=Neutronium Core
+item.neutronium_core.tooltip=Ripping apart the fabric of spacetime. One step closer to the Ether.
+
+item.nullifaction_core.name=Nullifaction Core
+item.nullifaction_core.tooltip=The Ether awaits.
 
 item.polonium_jar.name=Jar of Polonium-210
+item.polonium_jar.tooltip=Guaranteed radiation poisoning. We swear!
+
 item.mask_morko.name=Morko's Mask
 item.mask_white.name=Raven Mask
 
 item.spawnMorko.name=Morko Spawn Egg
 
+item.tool_thermometer.name=Thermometer
+item.tool_thermometer.desc=Useful for measuring temperatures! Don't let it get too hot, though...
+
+item.tool_better_thermometer.name=Reinforced Thermometer
+item.tool_better_thermometer.desc=Now virtually indestructible!
+
 tile.quantanium_ore.name=Quantanium Ore
 tile.potato_ore.name=Potato Ore
+tile.serpentinite_ore.name=Serpentinite Ore
 tile.high_density_steel.name=High-Density Steel Block
 
 tile.quantum_reactor.name=Quantum Reactor Core
+tile.quantum_reactor.tooltip=Shift-right-click on this to form the reactor multiblock.
+
 tile.quantum_reactor_singularity.name=Singularity Containment Frame
 tile.quantum_reactor_pylon.name=Quantum Reactor Pylon
 tile.quantum_reactor_pylon_cap.name=Quantum Reactor Pylon Cap
 tile.quantum_reactor_containment_electromagnet.name=Quantum Reactor Containment Electromagnet
 tile.quantum_reactor_controller.name=Quantum Reactor Controller
-tile.quantum_reactor_power_tap.name=Quantum Reactor Outflow Connector
+tile.quantum_reactor_failsafe.name=Quantum Reactor Failsafe
+tile.quantum_reactor_fluid_port.name=Quantum Reactor Fluid Port
+tile.quantum_reactor_heat_exchanger.name=Quantum Reactor Heat Exchanger
+tile.quantum_reactor_power_tap.name=Quantum Reactor Power Tap
 tile.base_machine_frame.name=Base Machine Frame
+tile.asbestos_block.name=Asbestos Block
+tile.asbestos_block.tooltip=Perfect for insulation, but don't breathe the dust...
+tile.quantanium_block.name=Block of Quantanium
+tile.quantanium_block.tooltip=Not the safest of blocks.
 
 entity.nullifactor.morko.name=Morko
 
