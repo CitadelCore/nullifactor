@@ -11,7 +11,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import xyz.towerdevs.helios.instantiable.BlockReference;
-import xyz.towerdevs.nullifactor.common.blocks.BlockQuantumReactorPylonCap;
+import xyz.towerdevs.nullifactor.common.blocks.reactor.BlockQuantumReactorPylonCap;
 
 public class TileEntityQuantumReactor extends TileEntityQuantumBase {
 	private static int maxReactorRadius = 9;

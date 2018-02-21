@@ -1,4 +1,4 @@
-package xyz.towerdevs.nullifactor.common.blocks;
+package xyz.towerdevs.nullifactor.common.blocks.reactor;
 
 import net.minecraft.block.material.Material;
 import xyz.towerdevs.nullifactor.Nullifactor;

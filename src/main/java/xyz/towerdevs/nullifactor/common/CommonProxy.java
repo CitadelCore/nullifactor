@@ -4,6 +4,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,7 +24,8 @@ import xyz.towerdevs.nullifactor.Nullifactor;
 import xyz.towerdevs.nullifactor.NullifactorGUI;
 import xyz.towerdevs.nullifactor.NullifactorRecipes;
 import xyz.towerdevs.nullifactor.NullifactorWorldGenerator;
-import xyz.towerdevs.nullifactor.common.blocks.*;
+import xyz.towerdevs.nullifactor.common.blocks.reactor.*;
+import xyz.towerdevs.nullifactor.common.commands.CommandMorko;
 import xyz.towerdevs.nullifactor.common.entities.EntityMorko;
 import xyz.towerdevs.nullifactor.common.items.*;
 import xyz.towerdevs.nullifactor.common.misc.NullifactorAchievements;
@@ -90,7 +92,6 @@ public class CommonProxy {
 		// Items.
 		ItemNullifactor.instance.setCreativeTab(Nullifactor.creativeTab);
 		GameRegistry.registerItem(ItemNullifactor.instance, "the_nullifactor");
-		GameRegistry.registerItem(new NullifactorEntityPlacer("morko", 0xE18519, 0x000000).setUnlocalizedName("spawnMorko"), "spawnMorko");
 		
 		/** Register resource items such as ingots and ores */
 		for (ResourceItemRegistry registry : ResourceItemRegistry.values()) {
@@ -101,8 +102,9 @@ public class CommonProxy {
 		
 		// World generators.
 		GameRegistry.registerWorldGenerator(new NullifactorWorldGenerator(), 100);
+		
 		// Entities.
-		EntityRegistry.registerModEntity(EntityMorko.class, "morko", 57, "nullifactor", 128, 1, false);
+		EntityRegistry.registerModEntity(EntityMorko.class, "morko", 57, "nullifactor", 1024, 1, false);
 		
 		// Achievement pages.
 		AchievementPage.registerAchievementPage(NullifactorAchievements.instance);
@@ -130,5 +132,9 @@ public class CommonProxy {
     				MinecraftForgeClient.registerItemRenderer(item, haloRenderer);
     		}
     	}
+	}
+	
+	public void serverLoad(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandMorko());
 	}
 }

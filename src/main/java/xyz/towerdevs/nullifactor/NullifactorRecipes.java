@@ -12,7 +12,8 @@ import net.minecraftforge.oredict.OreDictionary;
 import xyz.towerdevs.helios.base.MultiReturnRecipe;
 import xyz.towerdevs.helios.helpers.CraftingHelper;
 import xyz.towerdevs.helios.registries.ModRegistry;
-import xyz.towerdevs.nullifactor.common.blocks.BlockQuantumReactorPylon;
+import xyz.towerdevs.nullifactor.common.blocks.reactor.BlockQuantumReactor;
+import xyz.towerdevs.nullifactor.common.blocks.reactor.BlockQuantumReactorPylon;
 import xyz.towerdevs.nullifactor.common.items.ItemNullifactor;
 import xyz.towerdevs.nullifactor.common.registries.ResourceBlockRegistry;
 import xyz.towerdevs.nullifactor.common.registries.ResourceItemRegistry;
@@ -41,6 +42,8 @@ public class NullifactorRecipes {
 		
 		// Machine recipes
 		GameRegistry.addRecipe(new ItemStack(BlockQuantumReactorPylon.instance), new Object[] { "isi", "pbp", "isi", 'i', Items.iron_ingot, 's', ResourceItemRegistry.SUPERCPLATE.getItem(), 'p', ResourceItemRegistry.SHIELDPLATE.getItem(), 'b', ResourceBlockRegistry.BASEMACHINEFRAME.getBlock() });
+		GameRegistry.addRecipe(new ItemStack(BlockQuantumReactor.instance), new Object[] { "isi", "pbp", "isi", 'i', Items.iron_ingot, 's', ResourceItemRegistry.SUPERCPLATE.getItem(), 'p', ResourceItemRegistry.QUANTANIUMPANEL.getItem(), 'b', ResourceBlockRegistry.BASEMACHINEFRAME.getBlock() });
+		//GameRegistry.addRecipe(new ItemStack(BlockQuantumReactorSingularity.instance), new Object[] { "o"});
 		
 		// Ore dictionary
 		OreDictionary.registerOre("nullifactor:quantanium_ore", ResourceOreRegistry.QUANTANIUMORE.getOre());
@@ -48,6 +51,7 @@ public class NullifactorRecipes {
 		OreDictionary.registerOre("nullifactor:serpentinite_ore", ResourceOreRegistry.SERPENTINITEORE.getOre());
 		
 		//ThermalExpansionHelper.addSmelterRecipe(arg0, arg1, arg2, arg3);
+		//ThermalExpansionHelper.
 		
 		if (ModRegistry.AVARITIA.IsLoaded()) {
 			ItemStack diamondLatticeStack = new ItemStack(GameRegistry.findItem(ModRegistry.AVARITIA.GetModName(), "Resource"), 1, 0);
